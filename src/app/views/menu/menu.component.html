@@ -1,1 +1,20 @@
-<p>menu works!</p>
+<div class="sidebar" [ngClass]="{'sidebar-hidden': isHidden}">
+    <div class="profile">
+      <img src="assets/profile-icon.png" alt="Profile" class="profile-icon">
+      <span>Bienvenido/a, {{ username }}</span>
+      <i class="fas fa-chevron-down" (click)="toggleSidebar()"></i>
+    </div>
+    
+    <ul class="menu">
+      <li><i class="fas fa-home"></i> Inicio</li>
+      <li><i class="fas fa-comments"></i> Foro</li>
+      <li><i class="fas fa-bell"></i> Alertas</li>
+      <li><i class="fas fa-info-circle"></i> Información</li>
+      <li><i class="fas fa-calendar-alt"></i> Calendario</li>
+      <li><i class="fas fa-cloud-sun"></i> Predicción de clima</li>
+      <li><i class="fas fa-file-export"></i> Exportar datos</li>
+      <li><i class="fas fa-box-open"></i> Inventario</li>
+      <li class="logout"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</li>
+    </ul>
+  </div>
+  
