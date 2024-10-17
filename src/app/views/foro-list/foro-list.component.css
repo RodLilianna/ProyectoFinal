@@ -1,0 +1,184 @@
+/* Fondo del contenedor */
+.container-foro {
+  background-image: url('/assets/fondo1.png'); /* Asegúrate de que esta ruta sea correcta */
+  background-size: cover; /* Cubre todo el contenedor */
+  background-position: center; /* Centra la imagen de fondo */
+  padding: 20px; /* Espaciado interno */
+  height: 100vh; /* Altura completa de la vista */
+}
+
+/* Encabezado transparente */
+.transparent-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(47, 70, 47, 0); /* Fondo verde con transparencia */
+  color: white;
+  padding: 10px;
+  position: fixed; /* Fijo en la parte superior */
+  top: 0; /* En la parte superior */
+  width: 100%; /* Ocupa todo el ancho */
+  z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+.image-container {
+  display: flex; /* Coloca la imagen y el texto en una fila */
+  align-items: center; /* Alinea verticalmente la imagen y el texto */
+  gap: 10px; /* Espacio entre la imagen y el texto */
+}
+
+.logo{
+  width: 130px; /* Ajusta el tamaño de la imagen según lo que necesites */
+  height: auto; /* Mantén la proporción de la imagen */
+  border-radius: 10px; /* Opcional: bordes redondeados en la imagen */
+  padding-left: 45px;
+  padding-top: 35px;
+}
+
+.overlay-text {
+  max-width: 60%; /* Limita el ancho del contenido de texto */
+  font-size: 35px;
+  font-weight: 600;
+  margin-left: -20px;
+  padding-top: 35px;
+}
+
+.fondo-container{
+  background-color: #ffffffb2;
+  height: 100vh;
+  padding: 25px;
+  border-radius: 10px;
+}
+/* Icono de usuario */
+.user-icon {
+  font-size: 1.5rem; /* Tamaño del icono */
+  color: white; /* Cambia el color del icono a blanco */
+}
+
+/* Barra de búsqueda */
+.search-bar {
+  display: flex;
+  align-items: center; /* Alinea verticalmente los elementos */
+  margin: 70px 0 20px; /* Margen superior */
+  padding: 0; /* Sin espaciado interno */
+  border-radius: 5px; /* Bordes redondeados */
+  overflow: hidden; /* Asegura que no se desborde el contenido */
+}
+
+/* Input de búsqueda */
+.search-bar input {
+  width: 70%; /* Ajusta el ancho */
+  padding: 10px; /* Espaciado interno */
+  border: 1px solid #ccc; /* Borde */
+  border-radius: 5px 0 0 5px; /* Bordes redondeados en la izquierda */
+  outline: none; /* Elimina el contorno al hacer clic */
+}
+
+/* Icono de búsqueda */
+.search-icon {
+  color: white; /* Cambia el color del icono a blanco */
+  font-size: 1.2rem; /* Tamaño del icono */
+  padding: 14px; /* Espaciado interno para el ícono */
+  background-color: #a0cf30; /* Color de fondo del ícono */
+  border-radius: 0 5px 5px 0; /* Bordes redondeados solo a la derecha */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el ícono */
+  height: 100%; /* Hace que el ícono ocupe toda la altura del input */
+  display: flex; /* Hace que el ícono sea flexible */
+  align-items: center; /* Centra verticalmente el ícono */
+}
+
+/* Selector de categorías */
+.filter-categories {
+  padding: 8px; /* Espaciado interno */
+  border-radius: 5px; /* Bordes redondeados */
+  border: 1px solid #ffffff8a; /* Borde */
+  margin-left: 300px; /* Espacio entre el ícono y el selector de categorías */
+}
+
+/* Contenedor del foro */
+.foro-container {
+  padding: 20px;
+  margin-top: 20px; /* Espaciado superior */
+}
+
+/* Botón para añadir entrada */
+.btn-add-entry {
+  background-color: #448615; /* Color de fondo */
+  border: none; /* Sin borde */
+  color: white; /* Color del texto */
+  padding: 10px; /* Espaciado */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor tipo puntero */
+  margin-bottom: 20px; /* Espaciado inferior */
+}
+
+/* Card Container */
+.card {
+  background-color: white;
+  padding: 15px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+/* Card Content */
+.card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+/* User Icon and Title Content */
+.header-content {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* User Icon */
+.user-info {
+  margin-right: 15px;
+  font-size: 30px; /* Tamaño del icono */
+  color: #2e4a2e; /* Cambia el color del icono si es necesario */
+}
+
+#more{
+  font-size: 14px;
+  font-weight: 100;
+  font-style: italic;
+  color: #333;
+}
+/* Title and Meta Information */
+.title-info h4 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.publication-meta {
+  font-size: 14px;
+  color: #777; /* Color más tenue para la fecha y usuario */
+  margin-top: 5px;
+}
+
+/* Description */
+.description p {
+  font-size: 16px;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* Primary Button */
+.btn-primary {
+  background-color: #b30908;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  align-self: flex-start;
+}
+
+.btn-primary:hover {
+  background-color: #990807; /* Color al pasar el ratón */
+}

@@ -1,0 +1,54 @@
+<div class="container-foro">
+  <header class="transparent-header">
+    <div class="header-left">
+      <app-menu></app-menu>
+      <div class="image-container">
+      <img src="/assets/logo5.png" alt="Logo Foro" class="logo">
+      <div class="overlay-text">
+        Foro
+      </div>
+    </div>
+    </div>
+    <div class="header-right">
+      <i class="fi fi-sr-circle-user user-icon"></i> <!-- Icono de usuario -->
+    </div>
+  </header>
+
+  <div class="foro-container">
+    <div class="search-bar">
+      <input type="text" class="form-control" placeholder="Buscar...">
+        <i class="fas fa-search search-icon"></i> <!-- Icono de búsqueda -->
+      
+      <select class="filter-categories">
+        <option value="">Categorías</option>
+        <!-- Aquí puedes agregar opciones dinámicamente -->
+        <option value="categoria1">Categoría 1</option>
+        <option value="categoria2">Categoría 2</option>
+      </select>
+    </div>
+<div class="fondo-container">
+    <button class="btn-add-entry">Añadir entrada</button>
+
+    <div *ngFor="let publicacion of publicaciones" class="card">
+      <div class="card-content">
+        <div class="header-content">
+          <div class="user-info">
+            <i class="fas fa-user"></i> <!-- Icono de usuario usando FontAwesome -->
+          </div>
+          <div class="title-info">
+            <h4>{{ publicacion.titulo }}</h4>
+            <p class="publication-meta">Publicado por {{ publicacion.usuario }} el {{ publicacion.fecha }}</p>
+          </div>
+        </div>
+        <div class="description">
+          <p>{{ publicacion.descripcion.split('.')[0] }}.</p> <!-- Solo muestra la primera oración -->
+          <span class="more-text" style="display:none;">{{ publicacion.descripcion.substring(publicacion.descripcion.indexOf('.') + 1) }}</span> <!-- Resto del texto oculto -->
+        </div>
+        <p id="more">Ver mas...</p>
+        <a [routerLink]="['/foro', publicacion.id]" class="btn btn-primary">Ver discusión</a>
+      </div>
+    </div>
+    
+    </div>
+  </div>
+</div>

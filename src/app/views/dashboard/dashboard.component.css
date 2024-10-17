@@ -1,0 +1,68 @@
+/* Custom styles for the dashboard */
+.dashboard-container {
+    background-image: url('/assets/fondo.jpg'); /* Background for the entire dashboard */
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    padding-top: 70px; /* Space for header */
+  }
+  
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: none;  
+    z-index: 1000;
+  }
+  
+  .header .navbar-brand img {
+    max-height: 50px;
+  }
+  
+  .sidebar {
+    min-width: 250px;
+  }
+  
+  .sidebar .nav-link {
+    color: #000;
+  }
+  
+  .sidebar .nav-link.active {
+    background-color: #e9ecef;
+    font-weight: bold;
+  }
+  
+  
+  /* Cards with transparency */
+  .card {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Responsive sidebar */
+  @media (max-width: 768px) {
+    .sidebar {
+      display: none;
+    }
+  
+    .content {
+      margin-left: 0;
+    }
+  }
+  
+  /* Dropdown for profile in header */
+  .profile-dropdown-menu {
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  
