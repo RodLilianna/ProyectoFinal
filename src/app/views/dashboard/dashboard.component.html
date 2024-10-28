@@ -1,101 +1,62 @@
 <div class="dashboard-container">
-    <!-- Header -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark header">
-      <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="#">
-          <img src="/assets/logo7.png" alt="Agrosmart Logo">
-        </a>
-        <div class="dropdown ms-auto">
-          <a href="#" class="d-flex align-items-center text-light text-decoration-none dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="bi bi-person-circle fs-4"></i>
-          </a>
-          <ul class="dropdown-menu dropdown-menu-end profile-dropdown-menu" aria-labelledby="profileDropdown">
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><a class="dropdown-item" href="#">Logout</a></li>
-          </ul>
-        </div>
+  <header class="transparent-header">
+    <div class="header-left">
+      <app-menu></app-menu>
+      <div class="image-container">
+        <img src="/assets/logo5.png" alt="Logo Foro" class="logo">
+        <div class="overlay-text">Dashboard</div>
       </div>
-    </nav>
-  
-    <!-- Sidebar (Menu Component) -->
-    <app-menu></app-menu>
+    </div>
+    <div class="header-right">
+      <i class="fi fi-sr-circle-user user-icon"></i>
+    </div>
+  </header>
 
-  
-    <!-- Content Grid -->
-    <div class="content container">
-      <div class="row g-4">
-        <!-- Temperature and Humidity stacked -->
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">TEMPERATURA</h5>
-              <img src="/assets/tempertura.png" alt="Temperatura">
-            </div>
-          </div>
-          <div class="card mt-4">
-            <div class="card-body">
-              <h5 class="card-title">HUMEDAD</h5>
-              <p>12%</p>
-              <p>Normal</p>
-            </div>
-          </div>
+  <div class="content">
+    <div class="grid-container">
+      <div class="card temperatura">
+        <h5>TEMPERATURA</h5>
+        <img src="/assets/tempertura.png" class="card-image" alt="Temperatura">
+      </div>
+      <div class="card humedad">
+        <h5>HUMEDAD</h5>
+        <p class="humidity-value">12%</p>
+        <p>Normal</p>
+      </div>
+      <div class="card insumos">
+        <h5>INSUMOS EN STOCK</h5>
+        <img src="/assets/insumos.png" class="card-image-full" alt="Insumos en Stock">
+      </div>
+      <div class="card tareas text-left">
+        <h5>PRÓXIMAS TAREAS</h5>
+        <ul>
+          <li>
+            <input type="checkbox">
+            <label>Revisión de cultivos</label>
+            <p class="due-date">Hoy</p>
+          </li>
+          <li>
+            <input type="checkbox">
+            <label>Mantenimiento de equipos</label>
+            <p class="due-date">07/11/2024</p>
+          </li>
+        </ul>
+      </div>
+      <div class="card riesgo text-left">
+        <h5>PRECIPITACIÓN VS RIESGO</h5>
+        <img src="/assets/graphic.png" class="card-image-large" alt="Gráfico de Precipitación vs Riesgo">
+      </div>
+      <div class="card notificaciones text-left">
+        <h5>ÚLTIMAS NOTIFICACIONES</h5>
+        <div class="card-content">
+          <h6 class="notification-title">Recordatorio</h6>
+          <p>Recuerda el evento "Revisión de cultivos" para hoy.</p>
         </div>
-  
-        <!-- Stock in Supplies -->
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">INSUMOS EN STOCK</h5>
-              <img src="/assets/insumos.png" alt="Insumos en Stock">
-            </div>
-          </div>
-        </div>
-  
-        <!-- Next Tasks -->
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">PRÓXIMAS TAREAS</h5>
-              <ul class="list-group">
-                <li class="list-group-item">
-                  <input class="form-check-input me-1" type="checkbox" checked> Revisión de cultivos (Hoy)
-                </li>
-                <li class="list-group-item">
-                  <input class="form-check-input me-1" type="checkbox"> Mantenimiento de equipos (07/11/2024)
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-  
-        <!-- Precipitation vs Risk -->
-        <div class="col-md-8">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">PRECIPITACIÓN VS RIESGO</h5>
-              <img src="/assets/graphic.png" alt="Precipitación vs Riesgo">
-            </div>
-          </div>
-        </div>
-  
-        <!-- Latest Notifications -->
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">ÚLTIMAS NOTIFICACIONES</h5>
-              <div class="alert alert-secondary" role="alert">
-                <strong>Recordatorio:</strong> Recuerda el evento "Revisión de cultivos" para hoy.
-              </div>
-              <div class="alert alert-secondary" role="alert">
-                <strong>Recordatorio:</strong> Recuerda el evento "Revisión de cultivos" para hoy.
-              </div>
-            </div>
-          </div>
+        <div class="card-content">
+          <h6 class="notification-title">Recordatorio</h6>
+          <p>Recuerda el evento "Revisión de cultivos" para hoy.</p>
         </div>
       </div>
     </div>
   </div>
-  
+</div>

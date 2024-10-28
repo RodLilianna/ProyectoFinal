@@ -1,52 +1,115 @@
+/* Fondo del contenedor */
 .container-foro {
-  background-color: #f0f0f0; /* Color de fondo */
+  background-image: url('/assets/fondo1.png'); /* Asegúrate de que esta ruta sea correcta */
+  background-size: cover;
+  background-position: center;
   padding: 20px;
+  height: 100vh;
 }
 
-header {
+
+/* Encabezado transparente */
+.transparent-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #2e4a2e;
+  background-color: rgba(47, 70, 47, 0);
   color: white;
   padding: 10px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
-.menu-icon {
-  cursor: pointer;
-  font-size: 1.5rem;
+.image-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .logo {
-  display: flex;
-  align-items: center;
+  width: 130px;
+  height: auto;
+  border-radius: 10px;
+  padding-left: 45px;
+  padding-top: 35px;
 }
 
-.logo img {
-  width: 30px;
-  margin-right: 10px;
+.overlay-text {
+  max-width: 60%;
+  font-size: 35px;
+  font-weight: 600;
+  margin-left: -20px;
+  padding-top: 35px;
 }
 
-.user-icon {
-  font-size: 1.5rem;
+/* Contenedor del foro */
+.foro-container {
+  padding: 20px;
+  margin-top: 20px; /* Espaciado superior */
+}
+
+/* Fondo del foro */
+.fondo-container {
+  background-color: #ffffffb2;
+  height: 100vh;
+  padding: 25px;
+  border-radius: 10px;
+}
+
+.btn-go-back {
+  background-color: #44861500; /* Color de fondo */
+  border: none; /* Sin borde */
+  color: #448615; /* Color del texto */
+  cursor: pointer; /* Cursor tipo puntero */
+  margin-bottom: 10px; /* Espaciado inferior */
+  size: 20px;
+}
+
+/* User Icon */
+.user-info {
+  margin-right: 15px;
+  font-size: 30px; /* Tamaño del icono */
+  color: #2e4a2e; /* Cambia el color del icono si es necesario */
 }
 
 /* Barra de búsqueda */
 .search-bar {
   display: flex;
-  justify-content: center;
-  margin: 10px 0;
+  align-items: center;
+  margin: 70px 0 20px;
+  border-radius: 5px;
 }
 
 .search-bar input {
-  width: 80%;
-  padding: 8px;
-  border-radius: 5px;
+  width: 70%;
+  padding: 10px;
   border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+  outline: none;
 }
 
-/* Detalle de publicación */
-.publicacion-detail {
+.search-icon {
+  color: white;
+  font-size: 1.2rem;
+  padding: 14px;
+  background-color: #a0cf30;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.filter-categories {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ffffff8a;
+  margin-left: 300px;
+}
+
+/* Card Container */
+.card {
   background-color: white;
   padding: 15px;
   margin-bottom: 10px;
@@ -54,23 +117,108 @@ header {
   border-radius: 10px;
 }
 
-/* Sección de comentarios */
-.comentarios-section {
-  margin-top: 20px;
+.card-content {
+  display: flex;
+  flex-direction: column;
 }
 
-.comentario {
-  background-color: #e9ecef;
-  padding: 10px;
-  border-radius: 5px;
+.header-content {
+  display: flex;
+  align-items: center;
   margin-bottom: 10px;
 }
 
-.btn-add-comment {
-  background-color: #6aa84f;
-  border: none;
-  color: white;
+.user-info {
+  margin-right: 15px;
+  font-size: 30px;
+  color: #2e4a2e;
+}
+
+.title-info h4 {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.publication-meta {
+  font-size: 16px;
+  color: #777;
+  margin-top: 8px;
+}
+
+.description p {
+  font-size: 18px;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* Sección de comentarios */
+.comments-section {
+  background-color: #ffffff;
+  height: 100vh;
+  padding: 25px;
+  border-radius: 10px;}
+
+.comments-section h5 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+.comment {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  padding: 15px;
+}
+
+.comment-user-icon {
+  font-size: 25px;
+  color: #2e4a2e;
+  margin-right: 10px;
+}
+
+.comment-content h6 {
+  margin: 0;
+  font-size: 18px;
+  color: #2e4a2e;
+}
+
+.comment-content p {
+  margin: 5px 0;
+  color: #555;
+  font-size: 16px;
+}
+
+.comment-date {
+  font-size: 12px;
+  color: #999;
+}
+
+.add-comment {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.comment-input {
+  flex: 1;
   padding: 10px;
   border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.btn-comment {
+  background-color: #a0cf30;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin-left: 10px;
   cursor: pointer;
+}
+
+.btn-comment:hover {
+  background-color: #8bb329;
 }

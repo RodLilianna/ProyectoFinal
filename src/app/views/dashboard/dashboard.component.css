@@ -1,68 +1,208 @@
-/* Custom styles for the dashboard */
-.dashboard-container {
-    background-image: url('/assets/fondo.jpg'); /* Background for the entire dashboard */
-    background-size: cover;
-    background-position: center;
-    min-height: 100vh;
-    padding-top: 70px; /* Space for header */
-  }
-  
-  .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: none;  
-    z-index: 1000;
-  }
-  
-  .header .navbar-brand img {
-    max-height: 50px;
-  }
-  
-  .sidebar {
-    min-width: 250px;
-  }
-  
-  .sidebar .nav-link {
-    color: #000;
-  }
-  
-  .sidebar .nav-link.active {
-    background-color: #e9ecef;
-    font-weight: bold;
-  }
-  
-  
-  /* Cards with transparency */
-  .card {
-    background-color: rgba(255, 255, 255, 0.8);
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .card img {
-    max-width: 100%;
-    height: auto;
-  }
-  
-  /* Responsive sidebar */
-  @media (max-width: 768px) {
-    .sidebar {
-      display: none;
-    }
-  
-    .content {
-      margin-left: 0;
-    }
-  }
-  
-  /* Dropdown for profile in header */
-  .profile-dropdown-menu {
-    background-color: white;
-    border-radius: 5px;
-    padding: 10px;
-  }
-  
-  
+body, .dashboard-container {
+  background-image: url('/assets/fondo1.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  margin: 0;
+}
+
+.transparent-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(47, 70, 47, 0);
+  color: white;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.image-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 140px;
+  height: auto;
+  border-radius: 10px;
+  padding-left: 50px;
+  padding-top: 35px;
+}
+
+.overlay-text {
+  max-width: 60%;
+  font-size: 35px;
+  font-weight: 600;
+  margin-left: -20px;
+  padding-top: 35px;
+}
+
+.content {
+  flex: 1;
+  padding-top: 120px;
+  padding-right: 40px;
+  padding-left: 40px; 
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, auto);
+  gap: 20px;
+}
+
+.temperatura {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.humedad {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+.insumos {
+  grid-column: 2 / 3;
+  grid-row: 1 / 3;
+}
+
+.tareas {
+  grid-column: 3 / 4;
+  grid-row: 1 / 3;
+}
+
+.riesgo {
+  grid-column: 1 / 3;
+  grid-row: 3 / 5;
+}
+
+.notificaciones {
+  grid-column: 3 / 4;
+  grid-row: 3 / 5;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.568);
+  border: none;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.card h5 {
+  font-size: 1.6rem;
+  font-weight: bolder;
+  margin-bottom: 5px;
+  color: #000000;
+  position: relative;
+}
+
+.card h5::after {
+  content: "";
+  display: block;
+  width: 80%;
+  height: 2px;
+  background-color: white;
+  margin: 5px auto 10px auto;
+}
+
+.text-left {
+  align-items: flex-start; /* Alinea el contenido al lado izquierdo */
+  text-align: left;
+  padding-left: 50px; /* Ajusta el padding izquierdo */
+}
+
+.text-left h5, .text-left ul, .text-left .card-content h6 {
+  align-items: flex-start; /* Alinea el contenido al lado izquierdo */
+  text-align: left;
+  padding-left: 1px; /* Ajusta el padding izquierdo */}
+
+.text-left h5::after {
+  margin: 5px 0 10px 0;
+}
+
+.card-image {
+  width: 100%;
+  border-radius: 5px;
+  height: 150px;
+}
+
+.card-image-large {
+  width: 100%;
+  border-radius: 5px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-image-full {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.humidity-value {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.tareas ul, .notificaciones ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  font-weight: bolder;
+}
+
+.tareas ul li, .notificaciones ul li {
+  font-size: 1.2rem;
+  padding: 5px 0;
+  display: block;
+  align-items:baseline;
+}
+
+.tareas ul li label {
+  margin-left: 5px;
+}
+
+.due-date {
+  font-size: 1rem;
+  color: #ffffff;
+  margin-top: 2px;
+  font-weight: lighter;
+}
+
+.notificaciones .card-content {
+  border: 1px solid white;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.card-content h6.notification-title {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: left;
+
+}
+
+.card-content p {
+  font-size: 1.1rem;
+  color: #ffffff;
+}
