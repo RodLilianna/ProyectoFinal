@@ -1,27 +1,27 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuComponent } from '../menu/menu.component'; // Asegúrate de que esta ruta sea correcta
-import { CommonModule } from '@angular/common'; // Importa CommonModule
+import { MenuComponent } from '../menu/menu.component'; 
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-foro-detail',
   standalone: true,
-  imports: [CommonModule, MenuComponent], // Asegúrate de incluir CommonModule aquí
+  imports: [CommonModule, MenuComponent], 
   templateUrl: './foro-detail.component.html',
   styleUrls: ['./foro-detail.component.css']
 })
 export class ForoDetailComponent {
-  publicacion: any; // Asegúrate de definir esto adecuadamente
-  comentarios: any[] = []; // Asegúrate de obtener los comentarios
-  sidebarOpen = false; // Estado del menú
+  publicacion: any; 
+  comentarios: any[] = []; 
+  sidebarOpen = false;
 
   constructor(private router: Router) {}
 
   goBack(): void {
-    this.router.navigate(['/foro']); // Cambia esto si necesitas volver a una ruta diferente
+    this.router.navigate(['/foro']); 
   }
 
   toggleSidebar() {
-    this.sidebarOpen = !this.sidebarOpen; // Cambia el estado del menú
+    this.sidebarOpen = !this.sidebarOpen; 
   }
 }

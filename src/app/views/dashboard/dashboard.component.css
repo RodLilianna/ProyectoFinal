@@ -122,15 +122,15 @@ body, .dashboard-container {
 }
 
 .text-left {
-  align-items: flex-start; /* Alinea el contenido al lado izquierdo */
+  align-items: flex-start; 
   text-align: left;
-  padding-left: 50px; /* Ajusta el padding izquierdo */
+  padding-left: 50px; 
 }
 
 .text-left h5, .text-left ul, .text-left .card-content h6 {
-  align-items: flex-start; /* Alinea el contenido al lado izquierdo */
+  align-items: flex-start; 
   text-align: left;
-  padding-left: 1px; /* Ajusta el padding izquierdo */}
+  padding-left: 1px;}
 
 .text-left h5::after {
   margin: 5px 0 10px 0;

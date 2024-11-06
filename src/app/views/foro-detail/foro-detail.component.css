@@ -1,6 +1,5 @@
-/* Fondo del contenedor */
 .container-foro {
-  background-image: url('/assets/fondo1.png'); /* Asegúrate de que esta ruta sea correcta */
+  background-image: url('/assets/fondo1.png'); 
   background-size: cover;
   background-position: center;
   padding: 20px;
@@ -8,7 +7,7 @@
 }
 
 
-/* Encabezado transparente */
+
 .transparent-header {
   display: flex;
   justify-content: space-between;
@@ -44,13 +43,11 @@
   padding-top: 35px;
 }
 
-/* Contenedor del foro */
 .foro-container {
   padding: 20px;
-  margin-top: 20px; /* Espaciado superior */
+  margin-top: 20px;
 }
 
-/* Fondo del foro */
 .fondo-container {
   background-color: #ffffffb2;
   height: 100vh;
@@ -59,22 +56,20 @@
 }
 
 .btn-go-back {
-  background-color: #44861500; /* Color de fondo */
-  border: none; /* Sin borde */
-  color: #448615; /* Color del texto */
-  cursor: pointer; /* Cursor tipo puntero */
-  margin-bottom: 10px; /* Espaciado inferior */
+  background-color: #44861500; 
+  border: none; 
+  color: #448615; 
+  cursor: pointer; 
+  margin-bottom: 10px; 
   size: 20px;
 }
 
-/* User Icon */
 .user-info {
   margin-right: 15px;
-  font-size: 30px; /* Tamaño del icono */
-  color: #2e4a2e; /* Cambia el color del icono si es necesario */
+  font-size: 30px; 
+  color: #2e4a2e;
 }
 
-/* Barra de búsqueda */
 .search-bar {
   display: flex;
   align-items: center;
@@ -108,7 +103,6 @@
   margin-left: 300px;
 }
 
-/* Card Container */
 .card {
   background-color: white;
   padding: 15px;
@@ -152,7 +146,6 @@
   margin-top: 10px;
 }
 
-/* Sección de comentarios */
 .comments-section {
   background-color: #ffffff;
   height: 100vh;

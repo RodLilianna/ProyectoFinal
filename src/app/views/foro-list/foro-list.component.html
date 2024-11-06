@@ -10,18 +10,17 @@
     </div>
     </div>
     <div class="header-right">
-      <i class="fi fi-sr-circle-user user-icon"></i> <!-- Icono de usuario -->
+      <i class="fi fi-sr-circle-user user-icon"></i> 
     </div>
   </header>
 
   <div class="foro-container">
     <div class="search-bar">
       <input type="text" class="form-control" placeholder="Buscar...">
-        <i class="fas fa-search search-icon"></i> <!-- Icono de búsqueda -->
-      
+        <i class="fas fa-search search-icon"></i>
+
       <select class="filter-categories">
         <option value="">Categorías</option>
-        <!-- Aquí puedes agregar opciones dinámicamente -->
         <option value="categoria1">Categoría 1</option>
         <option value="categoria2">Categoría 2</option>
       </select>
@@ -33,7 +32,7 @@
       <div class="card-content">
         <div class="header-content">
           <div class="user-info">
-            <i class="fas fa-user"></i> <!-- Icono de usuario usando FontAwesome -->
+            <i class="fas fa-user"></i> 
           </div>
           <div class="title-info">
             <h4>{{ publicacion.titulo }}</h4>
@@ -41,8 +40,8 @@
           </div>
         </div>
         <div class="description">
-          <p>{{ publicacion.descripcion.split('.')[0] }}.</p> <!-- Solo muestra la primera oración -->
-          <span class="more-text" style="display:none;">{{ publicacion.descripcion.substring(publicacion.descripcion.indexOf('.') + 1) }}</span> <!-- Resto del texto oculto -->
+          <p>{{ publicacion.descripcion.split('.')[0] }}.</p> 
+          <span class="more-text" style="display:none;">{{ publicacion.descripcion.substring(publicacion.descripcion.indexOf('.') + 1) }}</span> 
         </div>
         <p id="more">Ver mas...</p>
         <a [routerLink]="['/foro', publicacion.id]" class="btn btn-primary">Ver discusión</a>
