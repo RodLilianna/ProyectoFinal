@@ -22,15 +22,23 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {
-                "glob": "**/*", 
-                "input": "src/assets", 
+                "glob": "**/*",
+                "input": "src/assets",
                 "output": "/assets"
+              },
+              {
+                "glob": "favicon.ico",
+                "input": "src/",
+                "output": "/"
               }
             ],
             "styles": [
+              "node_modules/bootstrap/scss/bootstrap.scss",
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "src/styles.css"
             ],
             "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
             ]
           },
           "configurations": {
@@ -82,9 +90,14 @@
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               {
-                "glob": "**/*", 
-                "input": "src/assets", 
+                "glob": "**/*",
+                "input": "src/assets",
                 "output": "/assets"
+              },
+              {
+                "glob": "favicon.ico",
+                "input": "src/",
+                "output": "/"
               }
             ],
             "styles": [
@@ -95,5 +108,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "c06aa5e0-0472-4c22-9545-99d5fc33d8d4"
   }
 }

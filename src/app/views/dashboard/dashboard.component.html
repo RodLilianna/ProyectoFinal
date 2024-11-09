@@ -1,1 +1,62 @@
-<p>dashboard works!</p>
+<div class="dashboard-container">
+  <header class="transparent-header">
+    <div class="header-left">
+      <app-menu></app-menu>
+      <div class="image-container">
+        <img src="/assets/logo5.png" alt="Logo Foro" class="logo">
+        <div class="overlay-text">Dashboard</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <i class="fi fi-sr-circle-user user-icon"></i>
+    </div>
+  </header>
+
+  <div class="content">
+    <div class="grid-container">
+      <div class="card temperatura">
+        <h5>TEMPERATURA</h5>
+        <img src="/assets/tempertura.png" class="card-image" alt="Temperatura">
+      </div>
+      <div class="card humedad">
+        <h5>HUMEDAD</h5>
+        <p class="humidity-value">12%</p>
+        <p>Normal</p>
+      </div>
+      <div class="card insumos">
+        <h5>INSUMOS EN STOCK</h5>
+        <img src="/assets/insumos.png" class="card-image-full" alt="Insumos en Stock">
+      </div>
+      <div class="card tareas text-left">
+        <h5>PRÓXIMAS TAREAS</h5>
+        <ul>
+          <li>
+            <input type="checkbox">
+            <label>Revisión de cultivos</label>
+            <p class="due-date">Hoy</p>
+          </li>
+          <li>
+            <input type="checkbox">
+            <label>Mantenimiento de equipos</label>
+            <p class="due-date">07/11/2024</p>
+          </li>
+        </ul>
+      </div>
+      <div class="card riesgo text-left">
+        <h5>PRECIPITACIÓN VS RIESGO</h5>
+        <img src="/assets/graphic.png" class="card-image-large" alt="Gráfico de Precipitación vs Riesgo">
+      </div>
+      <div class="card notificaciones text-left">
+        <h5>ÚLTIMAS NOTIFICACIONES</h5>
+        <div class="card-content">
+          <h6 class="notification-title">Recordatorio</h6>
+          <p>Recuerda el evento "Revisión de cultivos" para hoy.</p>
+        </div>
+        <div class="card-content">
+          <h6 class="notification-title">Recordatorio</h6>
+          <p>Recuerda el evento "Revisión de cultivos" para hoy.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
