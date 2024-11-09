@@ -26,15 +26,7 @@ img.registro {
 
 .container-fluid {
     position: relative;
-    background-image: url('/src/assets/images/fondoSunSetHarvest.jpg');
-    background-size: cover;
-    background-position: center;
-    height: auto;
-}
-
-.gradient {
-    position: relative;
-    background-image: url('/src/assets/images/gradient.png');
+    background-image: url('/assets/fondoSunSetHarvest.jpg');
     background-size: cover;
     background-position: center;
     height: auto;
