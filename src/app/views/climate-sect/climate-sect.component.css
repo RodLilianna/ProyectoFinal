@@ -1,0 +1,72 @@
+* {
+    font-family: Poppins;
+    color: #76796A;
+    font-size: medium;
+}
+
+input, select {
+    background-color: rgba(68, 134, 21, 0.24);
+    border: none;
+    padding: 5px;
+    width: 100%;
+    color: #0f0e0e;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.btn {
+    background-color: #8B2222;
+    color: #ffffff;
+}
+
+
+.container-fluid {
+    position: relative;
+    background-image: url('/src/assets/images/fondoSunSetHarvest.jpg');
+    background-size: cover;
+    background-position: center;
+    height: auto;
+}
+
+.gradient {
+    position: relative;
+    background-image: url('/src/assets/images/gradient.png');
+    background-size: cover;
+    background-position: center;
+    height: auto;
+}
+
+.container-fluid::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 1;
+}
+
+.container-fluid .content {
+    position: relative;
+    z-index: 2; 
+    color: white; 
+}
+
+
+.custom-hr {
+    border: none; 
+    height: 3px;
+    background-color: #ffffff; 
+    margin: 0; 
+    width: 100vw; 
+}
+
+.scrollable-container {
+    width: 1500px;
+    max-height: 450px; 
+    overflow-y: auto; 
+    padding-right: 15px;
+}

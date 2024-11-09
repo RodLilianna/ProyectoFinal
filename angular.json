@@ -22,14 +22,16 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {
-                "glob": "**/*",
-                "input": "public"
+                "glob": "**/*", 
+                "input": "src/assets", 
+                "output": "/assets"
               }
             ],
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+            ]
           },
           "configurations": {
             "production": {
@@ -80,8 +82,9 @@
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               {
-                "glob": "**/*",
-                "input": "public"
+                "glob": "**/*", 
+                "input": "src/assets", 
+                "output": "/assets"
               }
             ],
             "styles": [
