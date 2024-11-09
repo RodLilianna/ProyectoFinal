@@ -25,7 +25,8 @@ export const routes: Routes = [
   { path: 'foro', component: ForoListComponent },
   { path: 'foro/:id', component: ForoDetailComponent },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'informaciones', component: NewsComponent} 
+  { path: 'informaciones', component: NewsComponent},
+  {path: 'informaciones/:id', component: NewsDetailComponent}
 ];
 
 @NgModule({

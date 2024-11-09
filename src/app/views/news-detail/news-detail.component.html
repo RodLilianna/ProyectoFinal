@@ -1,9 +1,9 @@
-<div class="container-foro">
+<div class="container-fluid container-news">
   <header class="transparent-header">
     <div class="header-left">
       <app-menu></app-menu>
       <div class="image-container">
-        <img src="/assets/logo5.png" alt="Logo Foro" class="logo">
+        <img src="/assets/logo5.png" alt="Logo" class="logo">
         <div class="overlay-text">Informaciones Agricolas</div>
       </div>
     </div>
@@ -12,18 +12,22 @@
     </div>
   </header>
 
-  <div class="news-detail-container">
-    <img src="src\assets\fondo1.png" alt="News Image" class="news-image">
-    <div class="news-content">
-      <h2 class="news-category">Category: Agriculture</h2>
-      <h1 class="news-title">Agricultura Regenerativa: Ventajas y Desventajas</h1>
-      <p class="news-date">Publicado el 21/05/2024</p>
-      <p class="news-body">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...
-      </p>
-      <p class="news-body">
-        Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit...
-      </p>
+  <div class="action-buttons">
+    <button class="btn-back" (click)="goBack()">
+      <i class="fas fa-arrow-left"></i> 
+    </button>
+  </div>
+
+  <div class="news-container">
+    <div class="fondo-container">
+      <div class="article-content">
+        <img [src]="article.imageUrl" alt="{{ article.title }}" class="article-image">
+        <p class="publication-date">Publicado el {{ article.date }}</p>
+        <h1 class="article-title">{{ article.title }}</h1>
+        <div class="article-body">
+          <p>{{ article.content }}</p>
+        </div>
+      </div>
     </div>
   </div>
-  
+</div>
