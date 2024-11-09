@@ -11,6 +11,7 @@ import { ForoListComponent } from './views/foro-list/foro-list.component';
 import { ForoDetailComponent } from './views/foro-detail/foro-detail.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { NewsComponent } from './views/news/news.component';
+import { NewsDetailComponent } from './views/news-detail/news-detail.component';
 
 export const routes: Routes = [
   { path: 'registro', component: RegistroComponent },
