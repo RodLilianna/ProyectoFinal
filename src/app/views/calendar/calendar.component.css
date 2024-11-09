@@ -1,0 +1,67 @@
+* {
+    font-family: Poppins;
+    color: #76796A;
+    font-size: medium;
+}
+
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.exportar {
+    background-color: #448615;
+    color: white;
+}
+
+.gradient {
+    position: relative;
+    background-image: url('/assets/gradient.png');
+    background-size: cover;
+    background-position: center;
+    height: auto;
+}
+
+.container-fluid::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 1;
+}
+
+.container-fluid .content {
+    position: relative;
+    z-index: 2; 
+    color: white; 
+}
+
+btn.exportar{
+    background-color: #448615;
+}
+
+table{
+
+    width: 1500px;
+    height: 350px;
+    color: #ffffff;
+}
+
+.custom-hr {
+    border: none; 
+    height: 3px;
+    background-color: #ffffff; 
+    margin: 0; 
+    width: 100vw; 
+}
+
+.scrollable-container {
+    width: 1500px;
+    max-height: 450px; 
+    overflow-y: auto; 
+    padding-right: 15px;
+}
+
