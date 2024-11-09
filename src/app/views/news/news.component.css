@@ -1,4 +1,4 @@
-.container-foro {
+.container-news {
     background-image: url('/assets/fondo1.png'); 
     background-size: cover;
     background-position: center;
@@ -92,7 +92,7 @@
     margin-left: 300px;
   }
   
-  .foro-container {
+  .news-container {
     padding: 20px;
     margin-top: 20px;
   }
