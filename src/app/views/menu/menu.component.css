@@ -1,10 +1,8 @@
-/* Menú cerrado */
 .sidebar.closed {
-  transform: translateX(-250px); /* Desplaza el menú fuera de la pantalla */
+  transform: translateX(-250px); 
   transition: transform 0.3s ease-in-out;
 }
 
-/* Menú abierto */
 .sidebar {
   width: 250px;
   background-color: #ffffff;
@@ -17,10 +15,9 @@
   flex-direction: column;
   justify-content: space-between;
   transition: transform 0.3s ease-in-out;
-  z-index: 1000; /* Coloca el menú sobre el contenido */
+  z-index: 1000; 
 }
 
-/* Encabezado del menú lateral */
 .sidebar-header {
   padding: 20px;
   display: flex;
@@ -29,14 +26,13 @@
   border-bottom: 1px solid #e0e0e0;
 }
 
-/* Botón para abrir/cerrar menú */
 .menu-toggle {
   background: none;
   border: none;
   font-size: 20px;
   cursor: pointer;
   margin-bottom: 10px;
-  align-self: flex-end; /* Mueve el botón a la derecha */
+  align-self: flex-end; 
 }
 
 .logo {
@@ -58,7 +54,7 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  margin-right: 15px; /* Espaciado entre el ícono y el texto */
+  margin-right: 15px; 
 }
 
 .user-text {
@@ -76,11 +72,10 @@
 
 .username {
   font-weight: bold;
-  color: #000000; /* Verde oscuro */
+  color: #000000; 
   font-size: 16px;
 }
 
-/* Menú */
 .menu {
   flex-grow: 1;
 }
@@ -96,7 +91,7 @@
 
 .menu ul li a {
   text-decoration: none;
-  color: #4E702D; /* Gris oscuro */
+  color: #4E702D; 
   display: flex;
   align-items: center;
   padding: 15px 20px;
@@ -106,21 +101,20 @@
 }
 
 .menu ul li a i {
-  margin-right: 10px; /* Espaciado entre el ícono y el texto */
-  font-size: 18px; /* Ajuste de tamaño del ícono */
+  margin-right: 10px;
+  font-size: 18px; 
 }
 
 .menu ul li a.active {
-  background-color: #448615; /* Verde claro para el elemento activo */
-  color: #ffffff; /* Color texto para el activo */
+  background-color: #448615; 
+  color: #ffffff; 
 }
 
 .menu ul li a:hover {
-  background-color: #f0f4f0; /* Hover con gris claro */
+  background-color: #f0f4f0; 
   color: #233122;
 }
 
-/* Sección de cerrar sesión */
 .logout-section {
   padding: 20px;
   border-top: 1px solid #e0e0e0;
@@ -128,7 +122,7 @@
 
 .logout-btn {
   text-decoration: none;
-  color: #4E702D; /* Color gris oscuro */
+  color: #4E702D; 
   display: flex;
   font-weight: 600;
   align-items: center;
@@ -140,10 +134,9 @@
 }
 
 .logout-btn:hover {
-  color: #233122; /* Hover verde oscuro */
+  color: #233122; 
 }
 
-/* Botón de apertura del menú cuando está cerrado */
 .open-menu-btn {
   position: fixed;
   top: 20px;
@@ -152,7 +145,7 @@
   border: none;
   cursor: pointer;
   font-size: 24px;
-  z-index: 1001; /* Asegura que el botón esté sobre el contenido */
+  z-index: 1001; 
 }
 
 .fa-bars{
@@ -161,4 +154,3 @@
   padding-top: 20px;
   padding: 30px;
 }
-
