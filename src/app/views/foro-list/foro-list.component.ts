@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ForoService } from '../../foro.service';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';  
 import { MenuComponent } from '../menu/menu.component';
@@ -13,8 +12,6 @@ import { MenuComponent } from '../menu/menu.component';
 })
 export class ForoListComponent implements OnInit {
   publicaciones: any[] = [];
-
-  constructor(private foroService: ForoService) {}
 
   ngOnInit(): void {
     this.publicaciones = [

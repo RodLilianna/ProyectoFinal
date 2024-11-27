@@ -1,5 +1,4 @@
 .container-fluid {
-<<<<<<< HEAD
     padding-left: 0;
     padding-right: 0;
     margin: 0;
@@ -68,7 +67,6 @@
     max-height: calc(100vh - 200px); 
     min-height: 100vh;
     margin-top: 10px; 
-=======
   padding-left: 0;
   padding-right: 0;
   margin: 0;
@@ -137,13 +135,11 @@
   max-height: calc(100vh - 200px); 
   min-height: 100vh;
   margin-top: 10px; 
->>>>>>> dev
 
 }
 
 
 .article-image {
-<<<<<<< HEAD
     width: 100%;
     border-radius: 10px;
     object-fit: cover; 
@@ -195,7 +191,6 @@
 .btn-back i {
     font-size: 24px;
     margin-right: 8px;
-=======
   width: 100%;
   border-radius: 10px;
   object-fit: cover; 
@@ -247,5 +242,4 @@
 .btn-back i {
   font-size: 24px;
   margin-right: 8px;
->>>>>>> dev
 }

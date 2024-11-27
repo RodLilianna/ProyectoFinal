@@ -8,6 +8,7 @@ body {
   position: relative; 
   background-image: url('/assets/fondo.jpg');
   background-size: cover;
+  overflow: hidden; /* Evitar scroll innecesario */
 }
 
 .overlay {
@@ -16,27 +17,25 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(15, 23, 8, 61%);
-  z-index: 1; 
+  background-color: rgba(15, 23, 8, 0.61); /* Opacidad del overlay */
+  z-index: 1; /* Mantenerla detrás de los elementos del login */
 }
 
+/* Contenedor del login por encima del overlay */
 .login-container {
-  position: relative; 
-  z-index: 2; 
+  position: relative; /* Mantiene el contenedor sobre el overlay */
+  z-index: 2; /* Asegura que esté por encima del overlay */
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  width: 700px;
+  width: 100%; /* Usa el 100% del ancho */
 }
 
-h3{
-  font-size: 20px;
-  color: #76796A;
-  font-weight: lighter;
-}
 
 .login-box {
+  position: absolute; /* Para centrar correctamente */
+  z-index: 3; /* Asegura que el modal esté encima de todo */
   background-color: #EEEEEE;
   padding: 40px;
   border-radius: 10px;
@@ -77,7 +76,6 @@ button {
   margin-right: 10px;
 }
 
-
 button:hover {
   background-color: #26490c;
 }
@@ -110,8 +108,22 @@ button:hover {
 }
 
 .separator {
-    width: 1px;
-    height: 30px;
-    background-color: rgba(139, 69, 19, 50%);
-    margin: 0 10px;
+  width: 1px;
+  height: 30px;
+  background-color: rgba(139, 69, 19, 50%);
+  margin: 0 10px;
+}
+
+.modal-backdrop {
+  display: none !important; /* Oculta el backdrop */
+}
+
+.modal {
+  background: none !important; /* Elimina el fondo oscuro */
+  box-shadow: none !important; /* Elimina sombras si las hay */
+}
+
+.modal-content {
+  border-radius: 10px; /* Ajusta el diseño según tus necesidades */
+  border: 1px solid #ccc; /* Opcional: cambia los bordes */
 }
