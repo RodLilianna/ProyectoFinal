@@ -14,18 +14,17 @@ import * as bootstrap from 'bootstrap';
 })
 export class RegistroComponent {
   registroForm: FormGroup;
-  tokenForm: FormGroup; // Formulario para el token
+  tokenForm: FormGroup;
   isEmailSent = false;
   isModalVisible = false;
   errorMessage: string | null = null;
-  userId: string = ''; // Almacena el ID del usuario registrado
+  userId: string = '';
 
   constructor(
     private fb: FormBuilder,
     private registroService: RegisterService,
     private router: Router
   ) {
-    // Inicializa el formulario principal
     this.registroForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -33,12 +32,11 @@ export class RegistroComponent {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
-      selectRole: [1], // Rol predeterminado: Usuario
+      selectRole: [1],
       isActive: [true],
       hasError: [false],
     });
 
-    // Inicializa el formulario de token
     this.tokenForm = this.fb.group({
       token: ['', Validators.required],
     });
@@ -47,7 +45,7 @@ export class RegistroComponent {
   onSubmit(): void {
     if (this.registroForm.valid) {
       const userData = {
-        Id: '', // El Id se establecerá una vez que el backend lo devuelva
+        Id: '',
         firstName: this.registroForm.get('firstName')?.value,
         lastName: this.registroForm.get('lastName')?.value,
         userName: this.registroForm.get('userName')?.value,
@@ -61,15 +59,13 @@ export class RegistroComponent {
 
       this.registroService.register(userData).subscribe({
         next: (response) => {
-          console.log('Respuesta del backend:', response);
           if (response && response.idUser) {
-            this.userId = response.idUser;  // Ajusta al nombre correcto devuelto por el backend
+            this.userId = response.idUser;
+            localStorage.setItem('userId', this.userId); // Guarda userId en localStorage
             this.openModal();
           } else {
-            console.error('No se recibió un idUser válido. Respuesta del backend:', response);
+            console.error('No se recibió un idUser válido. Respuesta:', response);
           }
-
-          
         },
         error: (err) => {
           console.error('Error del backend:', err);
@@ -79,39 +75,45 @@ export class RegistroComponent {
       });
       
       
-  }
-}
-
-confirmEmail(): void {
-  if (this.tokenForm.valid) {
-    const token = this.tokenForm.get('token')?.value;
-    const userId = this.userId;
-
-    if (!userId) {
-      console.error('userId no disponible para la confirmación.');
-      window.alert('No se pudo obtener el ID de usuario.');
-      return;
     }
-
-    this.registroService.confirmEmail(userId, token).subscribe({
-      next: (response) => {
-        // Muestra el mensaje según el formato recibido
-        const message = response.message || 'Cuenta confirmada exitosamente.';
-        window.alert(message);
-        this.closeModal();
-        this.router.navigate(['/registro2']);
-      },
-      error: (err) => {
-        console.error('Error al confirmar el token:', err);
-        window.alert('Error: Token inválido o expirado.');
-      },
-    });
-  } else {
-    window.alert('Por favor ingrese el token para continuar.');
   }
-}
 
+  confirmEmail(): void {
+    if (this.tokenForm.valid) {
+      const token = this.tokenForm.get('token')?.value;
+      const userId = this.userId;
 
+      if (!userId) {
+        console.error('userId no disponible para la confirmación.');
+        window.alert('No se pudo obtener el ID de usuario.');
+        return;
+      }
+
+      this.registroService.confirmEmail(userId, token).subscribe({
+        next: (response) => {
+          const message = response.message || 'Cuenta confirmada exitosamente.';
+          window.alert(message);
+          this.closeModal();
+          const storedUserId = localStorage.getItem('userId');
+          if (!storedUserId) {
+            console.error('El userId no está disponible en localStorage antes de redirigir.');
+            window.alert('Hubo un error al procesar el usuario. Inténtalo nuevamente.');
+            return;
+          }
+          this.router.navigate(['/registro2']);
+          
+        },
+        error: (err) => {
+          console.error('Error al confirmar el token:', err);
+          const errorMsg =
+            err.error?.message || 'Token inválido o expirado. Intenta nuevamente.';
+          window.alert(`Error: ${errorMsg}`);
+        },
+      });
+    } else {
+      window.alert('Por favor ingrese el token para continuar.');
+    }
+  }
 
   openModal(): void {
     const modalElement = document.getElementById('tokenModal');
