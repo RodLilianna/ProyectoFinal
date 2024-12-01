@@ -16,23 +16,46 @@
         </header>
 
         <main >
-            <div class="div">
+            <div class="ms-5">
+                <input type="text" class="form-control w-25 d-inline text-dark" placeholder="Enter a city" [(ngModel)]="selectedCity" />
+                <button class="btn btn-primary text-light ms-2" (click)="fetchWeatherData()">Get Weather</button>
+            </div>
+
+            <div class="div ">
                 <div class="row">
                     <div class="col-3">
-                        <div class="bg-light bg-opacity-50 rounded-3 p-3 scrollable-container mt-3 w-100 ">
-                            <div class="row ">
-                                <div class="col-12 d-flex justify-content-center align-items-center">
-                                    <div class="mt-3 pb-5">
-                                        <img src="Iconos/drizzle.png" alt="" width="200px" height="150px">
-                                        <label for="" class="fs-1 d-block mt-2 text-center">30 °C</label>
-                                        <label for="" class="fs-5 d-block mt-2">Mostly Cloudy</label>
-                                        <label for="" class="fs-5 d-block mt-2">Rain 60%</label>
-                                        <img src="Iconos/Screenshot 2024-07-10 152919.png" class=" rounded-3 mt-2" alt="" width="200px" height="85px">
-                                    </div>
-                                </div>
+                        <div class="bg-light bg-opacity-50 rounded-3 p-3 scrollable-container mt-3 w-100">
+                          <div class="row">
+                            <div class="col-12 d-flex justify-content-center align-items-center">
+                              <div class="mt-3 pb-5">
+                                <img
+                                  [src]="'Iconos/' + getIcon(weatherData.weatherDescription)"
+                                  alt="weather icon"
+                                  width="200px"
+                                  height="150px"
+                                />
+                                <label class="fs-1 d-block mt-2 text-center">
+                                  {{ weatherData.temperature || '--' }} °C
+                                </label>
+                                <label class="fs-5 d-block mt-2">
+                                  {{ weatherData.weatherDescription || 'Sin datos' }}
+                                </label>
+                                <label class="fs-5 d-block mt-2">
+                                  Humedad: {{ weatherData.humidity || '--' }}%
+                                </label>
+                                <img
+                                  src="Iconos/Screenshot 2024-07-10 152919.png"
+                                  class="rounded-3 mt-2"
+                                  alt="weather chart"
+                                  width="200px"
+                                  height="85px"
+                                />
+                              </div>
                             </div>
+                          </div>
                         </div>
                     </div>
+
                     <div class="col-9">
                         <div class="bg-light bg-opacity-50 rounded-3 p-3 scrollable-container mt-3 w-100 h-100">
                             <div class="row">

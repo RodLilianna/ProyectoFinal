@@ -4,14 +4,6 @@
     font-size: medium;
 }
 
-input, select {
-    background-color: rgba(68, 134, 21, 0.24);
-    border: none;
-    padding: 5px;
-    width: 100%;
-    color: #0f0e0e;
-}
-
 ::-webkit-scrollbar {
     display: none;
 }
