@@ -1,45 +1,65 @@
+<!-- Formulario de registro -->
 <div class="container-fluid">
-    <div class="content">
-        <div class="row vh-100 d-flex align-items-center justify-content-center">
-            <div class="col-sm-9 col-md-5 col-lg-5">
-                <div class=" w-100">
-                    <div class="row px-5 py-3 rounded-3 mt-0 pt-0 border border-bottom-0 border-top-0 shadow-lg" style="background:#EEEEEE; ">
-                        <div class="d-block">
-                            <img src="assets/logo7.png" alt="" class=" registro d-block mx-auto mt-3 pt-0">
-                        </div>
-                        <div class="col-6 mb-3">
-                            <label class="form-label text-start">Nombre</label>
-                            <input type="text" class="d-block rounded-3">
-                        </div>
-                        <div class="col-6 mb-3">
-                            <label class="form-label text-start">Apellidos</label>
-                            <input type="text" class="d-block rounded-3">
-                        </div>
-                        <div class="col-12 mb-3">
-                            <label class="form-label text-start">Nombre de Usuario</label>
-                            <input type="text" class="d-block rounded-3">
-                        </div>
-                        <div class="col-12 mb-3">
-                            <label class="form-label text-start">Correo electrónico</label>
-                            <input type="email" class="d-block rounded-3">
-                        </div>
-                        <div class="col-12 mb-3">
-                            <label class="form-label text-start">Contraseña</label>
-                            <input type="password" class="d-block rounded-3">
-                        </div>
-                        <div class="col-12 mb-3">
-                            <label class="form-label text-start">Confirmar contraseña</label>
-                            <input type="password" class="d-block rounded-3">
-                        </div>
-                        <div class="col-12 mb-3 text-center">
-                            <button class="btn px-5 bg-danger text-light">SIGUIENTE</button>
-                        </div>
-                        <div class="col-12 mb-1 text-center">
-                            <label class="fw-medium">¡Ya tengo una cuenta, <a class="text-danger" href="index.html">iniciar sesion</a>!</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="content">
+    <div class="row vh-100 d-flex align-items-center justify-content-center">
+      <div class="col-sm-9 col-md-5 col-lg-5">
+        <form [formGroup]="registroForm" (ngSubmit)="onSubmit()" class="px-5 py-3 rounded-3 border shadow-lg" style="background:#EEEEEE;">
+          <div class="text-center mb-4">
+            <img src="assets/logo7.png" alt="Logo" class="registro d-block mx-auto mt-3" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input type="text" formControlName="firstName" class="form-control" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Apellidos</label>
+            <input type="text" formControlName="lastName" class="form-control" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Nombre de Usuario</label>
+            <input type="text" formControlName="userName" class="form-control" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Correo Electrónico</label>
+            <input type="email" formControlName="email" class="form-control" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Contraseña</label>
+            <input type="password" formControlName="password" class="form-control" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Confirmar Contraseña</label>
+            <input type="password" formControlName="confirmPassword" class="form-control" />
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-danger px-5">SIGUIENTE</button>
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
+</div>
+
+<!-- Modal de confirmación de token -->
+<div class="modal fade" id="tokenModal" tabindex="-1" aria-labelledby="tokenModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="tokenModalLabel">Verificación de Token</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="tokenForm">
+          <div class="mb-3">
+            <label for="token" class="form-label">Ingrese el token enviado a su correo</label>
+            <input type="text" class="form-control" id="token" formControlName="token" />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="confirmEmail()">Confirmar Token</button>
+      </div>
+    </div>
+  </div>
 </div>

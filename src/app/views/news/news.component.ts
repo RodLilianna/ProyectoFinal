@@ -12,12 +12,13 @@ import { CommonModule } from '@angular/common'; // Import CommonModule
 })
 export class NewsComponent {
   articles = [
-    { title: 'Agricultura Regenerativa: Ventajas y Desventajas', date: '21/05/2024', imageUrl: '/assets/fondo2.jpg' },
+    { id: 1, title: 'Agricultura Regenerativa: Ventajas y Desventajas', date: '21/05/2024', imageUrl: '/assets/fondo2.jpg' },
   ];
 
   constructor(private router: Router) {}
 
   goToDetail(article: any) {
-    this.router.navigate(['/article-detail'], { state: { article } });
+    this.router.navigate(['/informaciones', article.id]);
   }
+  
 }
