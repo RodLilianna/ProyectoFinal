@@ -23,7 +23,7 @@
       </select>
     </div>
 
-    <div class="fondo-container">
+    <div class="fondo-container scrollable-container ms-2">
       <button class="btn-go-back"><i class="fa-solid fa-arrow-left"></i></button>
       <div class="card">
         <div class="card-content">
@@ -49,13 +49,13 @@
       <div class="comments-section">
         <h5>Comentarios</h5>
         
-        <div class="comment">
+        <div *ngFor="let comentario of comentarios" class="comment">
           <div class="user-info">
             <i class="fas fa-user"></i> 
           </div>
           <div class="comment-content">
-            <h6>Lilianna Rodríguez</h6>
-            <p>Bueno, si estás buscando algo bueno y barato te recomiendo entrar a Amazon y guiarte de los reviews. Yo en lo personal compro casi todo ahí y en un local cerca de mi finca.</p>
+            <h6>{{ comentario.userId }}</h6>
+            <p>{{ comentario.content }}</p>
           </div>
         </div>
 
@@ -69,8 +69,12 @@
           </div>
         </div>
         <div class="add-comment">
-          <input type="text" placeholder="Añadir un comentario..." class="comment-input">
-          <button class="btn-comment">Comentar</button>
+          <input 
+            type="text" 
+            placeholder="Añadir un comentario..." 
+            class="comment-input" 
+            [(ngModel)]="nuevoComentario">
+          <button class="btn-comment" (click)="agregarComentario()">Comentar</button>
         </div>
       </div>
     </div>

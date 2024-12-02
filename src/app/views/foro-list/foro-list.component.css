@@ -168,3 +168,31 @@
 .btn-primary:hover {
   background-color: #990807; 
 }
+
+.scrollable-container {
+  width: 1450px;
+  max-height: 500px; 
+  overflow-y: auto; 
+  padding-right: 15px;
+}
+
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.custom-hr {
+  border: none; 
+  height: 3px;
+  background-color: #ffffff; 
+  margin: 0; 
+  width: 100%; 
+}
+
+.modal-content {
+  border-radius: 10px;
+  background-color: #f8f9fa;
+}
+.btn-add-entry {
+  margin-bottom: 20px;
+}

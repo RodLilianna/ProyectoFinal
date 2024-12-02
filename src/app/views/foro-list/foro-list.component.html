@@ -9,9 +9,10 @@
       </div>
     </div>
     </div>
-    <div class="header-right">
-      <i class="fi fi-sr-circle-user user-icon"></i> 
-    </div>
+    <div class="d-flex align-items-center me-5">
+      <button class="btn"><i class="bi bi-person-circle fs-3 text-light"></i></button>
+      <button class="btn"><i class="bi bi-caret-down fs-3 text-light"></i></button>
+  </div>
   </header>
 
   <div class="foro-container">
@@ -25,8 +26,66 @@
         <option value="categoria2">Categoría 2</option>
       </select>
     </div>
-<div class="fondo-container">
-    <button class="btn-add-entry">Añadir entrada</button>
+<div class="fondo-container scrollable-container ms-2">
+  <button type="button" class="btn btn-primary btn-add-entry" data-bs-toggle="modal" data-bs-target="#addEntryModal">
+    Añadir entrada
+  </button>
+
+    <hr class="custom-hr mb-4 fw-bold">
+
+    <div class="modal fade" id="addEntryModal" tabindex="-1" aria-labelledby="addEntryModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addEntryModalLabel">Nueva Entrada</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form (ngSubmit)="onAddEntry()">
+              <div class="mb-3">
+                <label for="title" class="form-label">Título</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="title"
+                  [(ngModel)]="newEntry.title"
+                  name="title"
+                  required
+                />
+              </div>
+              <!-- <div class="mb-3">
+                <label for="description" class="form-label">Descripción</label>
+                <textarea
+                  class="form-control"
+                  id="description"
+                  rows="3"
+                  [(ngModel)]="newEntry.description"
+                  name="description"
+                  required
+                ></textarea>
+              </div> -->
+              <!-- Campo para ingresar el token -->
+              <div class="mb-3">
+                <label for="token" class="form-label">Token de Autenticación</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="token"
+                  [(ngModel)]="newEntry.token"
+                  name="token"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary" (click)="onAddEntry()">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div *ngFor="let publicacion of publicaciones" class="card">
       <div class="card-content">
@@ -40,8 +99,9 @@
           </div>
         </div>
         <div class="description">
-          <p>{{ publicacion.descripcion.split('.')[0] }}.</p> 
-          <span class="more-text" style="display:none;">{{ publicacion.descripcion.substring(publicacion.descripcion.indexOf('.') + 1) }}</span> 
+          <p>{{ publicacion.descripcion && publicacion.descripcion.length > 0 ? publicacion.descripcion.substring(0, 100) : '' }}</p>
+          <span class="more-text" style="display:none;">{{ publicacion.descripcion && publicacion.descripcion.length > 0 ? publicacion.descripcion.substring(publicacion.descripcion.indexOf('.') + 1) : '' }}</span>
+
         </div>
         <p id="more">Ver mas...</p>
         <a [routerLink]="['/foro', publicacion.id]" class="btn btn-primary">Ver discusión</a>

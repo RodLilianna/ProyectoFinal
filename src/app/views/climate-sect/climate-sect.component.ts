@@ -3,13 +3,14 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { WeatherService } from './weather.service';
 import { FormsModule } from '@angular/forms';
+import { MenuComponent } from "../menu/menu.component";
 
 @Component({
   selector: 'app-climate-sect',
   standalone: true,
   templateUrl: './climate-sect.component.html',
   styleUrls: ['./climate-sect.component.css'],
-  imports: [CommonModule, HttpClientModule, FormsModule]
+  imports: [CommonModule, HttpClientModule, FormsModule,MenuComponent]
 })
 export class ClimateSectComponent implements OnInit {
   weatherData: any = {};
