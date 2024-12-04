@@ -7,5 +7,6 @@ export interface FormTierra {
     tipoDeRiego: string;
     tipoDeFertilizacion: string;
     usuarioId: string;
+    tamanoTerreno: number;
   }
   

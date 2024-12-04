@@ -8,9 +8,9 @@ import { LoginCredentials } from '../models/login-credentials.model'; // Asegúr
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'https://localhost:7125/api/User/Authentication';  // URL de autenticación
-  private forgotPasswordUrl = 'https://localhost:7125/api/User/forgot-password';  // URL para olvido de contraseña
-  private resetPasswordUrl = 'https://localhost:7125/api/User/reset-password';  // URL para resetear contraseña
+  private apiUrl = 'http://localhost:5255/api/User/Authentication';  // URL de autenticación
+  private forgotPasswordUrl = 'http://localhost:7125/api/User/forgot-password';  // URL para olvido de contraseña
+  private resetPasswordUrl = 'http://localhost:7125/api/User/reset-password';  // URL para resetear contraseña
 
   constructor(private http: HttpClient) {}
 

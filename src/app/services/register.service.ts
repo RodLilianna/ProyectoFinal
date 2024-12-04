@@ -7,8 +7,8 @@ import { catchError, map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class RegisterService {
-  private registerUrl = 'https://localhost:7125/api/User/Register'; // URL para registrar al usuario
-  private confirmEmailUrl = 'https://localhost:7125/api/User/confirm-email'; // URL para confirmar el correo del usuario
+  private registerUrl = 'http://localhost:5255/api/User/Register'; // URL para registrar al usuario
+  private confirmEmailUrl = 'http://localhost:5255/api/User/confirm-email'; // URL para confirmar el correo del usuario
 
   constructor(private http: HttpClient) {}
 

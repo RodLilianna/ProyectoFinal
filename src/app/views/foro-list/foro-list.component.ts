@@ -1,40 +1,74 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';  
+import { CommonModule } from '@angular/common';
 import { MenuComponent } from '../menu/menu.component';
+import { ForoService } from '../../services/foro.service';
+import { FormsModule } from '@angular/forms'; // Importar FormsModule
 
 @Component({
   selector: 'app-foro-list',
-  standalone: true,  
-  imports: [RouterModule, CommonModule, MenuComponent],  
+  standalone: true,
+  imports: [RouterModule, CommonModule, MenuComponent, FormsModule], // Agregar FormsModule aquí
   templateUrl: './foro-list.component.html',
-  styleUrls: ['./foro-list.component.css']
+  styleUrls: ['./foro-list.component.css'],
 })
 export class ForoListComponent implements OnInit {
   publicaciones: any[] = [];
+  showModal: boolean = false;
+
+  constructor(private foroService: ForoService) {}
 
   ngOnInit(): void {
-    this.publicaciones = [
-      {
-        usuario: 'Gabriela Gonzalez',
-        titulo: 'Problemas con pesticidas y salud',
-        fecha: '14 de Octubre, 2024',
-        descripcion: 'Hola, bueno, desde hace ya varias semanas he notado que el pesticida que tengo ya no está trayendo los resultados que espero. De paso, siento que me está haciendo daño en mi salud, tengo desde hace ya un tiempo con tos y fatiga y no sé si se deba al pesticida pues desde que empecé a usarlo es que me pasa esto. ¿Alguna recomendación? Que sea un poco barato también, por favor.',
-        id: 1 
-      },
-      {
-        usuario: 'Lilianna Rodriguez',
-        titulo: 'Efectos secundarios de los pesticidas',
-        fecha: '13 de Octubre, 2024',
-        descripcion: 'He estado usando un pesticida y he notado algunos efectos secundarios, como irritación en la piel. ¿Qué debería hacer?',
-        id: 2
-      }
-    ];
+    this.loadPosts();
   }
 
-  sidebarOpen = false;
+  loadPosts(): void {
+    this.foroService.getPosts().subscribe(
+      (posts) => {
+        this.foroService.getTopics().subscribe(
+          (topics) => {
+            // Relacionar los posts con sus topics
+            this.publicaciones = posts.map((post) => {
+              const topic = topics.find((t) => t.id === post.topicId);
+              return {
+                id: post.id,
+                titulo: topic?.title || 'Sin título', // Título del topic
+                descripcion: post.content,           // Contenido del post
+                usuario: post.userId,                // ID del usuario
+                fecha: new Date().toLocaleDateString(),
+              };
+            });
+            console.log('Publicaciones combinadas:', this.publicaciones); // Depuración
+          },
+          (error) => console.error('Error al cargar topics:', error)
+        );
+      },
+      (error) => console.error('Error al cargar posts:', error)
+    );
+  }
+  
+  
 
-  toggleSidebar() {
-    this.sidebarOpen = !this.sidebarOpen;
+  toggleModal(): void {
+    this.showModal = !this.showModal;
+  }
+
+  submitPost(formData: any): void {
+    const post = {
+      content: formData.descripcion,
+      userId: 'usuario123', // Ajusta este valor según la sesión del usuario
+      topicId: 1, // Cambia este valor según sea necesario
+    };
+
+    this.foroService.createPost(post).subscribe(
+      (response) => {
+        console.log('Publicación creada:', response);
+        this.loadPosts(); // Recarga la lista de publicaciones
+        this.toggleModal(); // Cierra el modal
+      },
+      (error) => {
+        console.error('Error al crear publicación:', error);
+      }
+    );
   }
 }

@@ -26,27 +26,45 @@
       </select>
     </div>
 <div class="fondo-container">
-    <button class="btn-add-entry">Añadir entrada</button>
+  <button class="btn-add-entry" (click)="toggleModal()">Añadir entrada</button>
 
-    <div *ngFor="let publicacion of publicaciones" class="card">
-      <div class="card-content">
-        <div class="header-content">
-          <div class="user-info">
-            <i class="fas fa-user"></i> 
-          </div>
-          <div class="title-info">
-            <h4>{{ publicacion.titulo }}</h4>
-            <p class="publication-meta">Publicado por {{ publicacion.usuario }} el {{ publicacion.fecha }}</p>
-          </div>
+  <div class="modal" *ngIf="showModal">
+    <div class="modal-content">
+      <h3>Añadir nueva entrada</h3>
+      <form #postForm="ngForm" (ngSubmit)="submitPost(postForm.value)">
+        <div>
+          <label for="titulo">Título:</label>
+          <input type="text" id="titulo" name="titulo" ngModel required>
         </div>
-        <div class="description">
-          <p>{{ publicacion.descripcion.split('.')[0] }}.</p> 
-          <span class="more-text" style="display:none;">{{ publicacion.descripcion.substring(publicacion.descripcion.indexOf('.') + 1) }}</span> 
+        <div>
+          <label for="descripcion">Descripción:</label>
+          <textarea id="descripcion" name="descripcion" ngModel required></textarea>
         </div>
-        <p id="more">Ver mas...</p>
-        <a [routerLink]="['/foro', publicacion.id]" class="btn btn-primary">Ver discusión</a>
-      </div>
+        <button type="submit" [disabled]="!postForm.valid">Guardar</button>
+        <button type="button" (click)="toggleModal()">Cancelar</button>
+      </form>
     </div>
+  </div>
+  
+  <div *ngFor="let publicacion of publicaciones" class="card">
+    <div class="card-content">
+      <div class="header-content">
+        <div class="user-info">
+          <i class="fas fa-user"></i> 
+        </div>
+        <div class="title-info">
+          <h4>{{ publicacion.titulo }}</h4> <!-- Título del topic -->
+          <p class="publication-meta">Publicado el {{ publicacion.fecha }}</p>
+        </div>
+      </div>
+      <div class="description">
+        <p>{{ publicacion.descripcion }}</p> <!-- Contenido del post -->
+      </div>
+      <a [routerLink]="['/foro', publicacion.id]" class="btn btn-primary">Ver discusión</a>
+    </div>
+  </div>
+  
+  
     
     </div>
   </div>

@@ -1,27 +1,30 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of, throwError } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class FormTierraService {
-  private apiUrl = 'https://localhost:7125/api/FormTierra';
+  private apiUrl = 'http://localhost:5255/api/FormTierra';
 
   constructor(private http: HttpClient) {}
 
-  saveFormData(data: any): Observable<any> {
-    const userId = localStorage.getItem('userId');
+  // Método para enviar el formulario
+  sendFormData(formData: any): Observable<any> {
+    // Obtener el authToken desde localStorage
+    const authToken = localStorage.getItem('authToken');
 
-    if (!userId) {
-      console.error('No se encontró usuarioId en localStorage');
-      return throwError(() => new Error('No se encontró usuarioId en localStorage'));
+    // Verificar si el authToken existe
+    if (!authToken) {
+      console.error('No se encontró el authToken');
+      return new Observable(observer => observer.error('No se encontró el authToken'));
     }
 
-    // Añadir el usuarioId directamente al cuerpo de la solicitud
-    const formData = { ...data, usuarioId: userId };
+    // Crear los encabezados de la solicitud con el authToken
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`);
 
-    return this.http.post(this.apiUrl, formData); // Ya no se necesita authToken en los headers
+    // Hacer la solicitud HTTP POST al backend
+    return this.http.post(this.apiUrl, formData, { headers });
   }
 }
-
