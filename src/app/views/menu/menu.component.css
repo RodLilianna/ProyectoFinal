@@ -154,3 +154,7 @@
   padding-top: 20px;
   padding: 30px;
 }
+
+.sidebar {
+  z-index: 1100; /* Asegúrate de que esté por encima de otros elementos */
+}

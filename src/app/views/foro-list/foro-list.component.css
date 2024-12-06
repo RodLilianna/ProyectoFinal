@@ -82,19 +82,12 @@
   align-items: center;
 }
 
-.filter-categories {
-  padding: 8px;
-  border-radius: 5px; 
-  border: 1px solid #ffffff8a; 
-  margin-left: 300px;
-}
-
 .foro-container {
   padding: 20px;
   margin-top: 20px;
 }
 
-.btn-add-entry {
+.btnAdd {
   background-color: #448615; 
   border: none; 
   color: white;
@@ -136,6 +129,13 @@
   color: #333;
 }
 
+.title-info {
+  display: flex;
+  flex-direction: column; 
+  align-items: flex-start; 
+  margin-left: 10px; 
+}
+
 .title-info h4 {
   margin: 0;
   font-size: 18px;
@@ -144,7 +144,7 @@
 
 .publication-meta {
   font-size: 14px;
-  color: #777; 
+  color: #777;
   margin-top: 5px;
 }
 
@@ -169,21 +169,106 @@
   background-color: #990807; 
 }
 
-.modal {
+/* Backdrop CSS */
+.modal-backdrop {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro con opacidad */
+  z-index: -1; /* Asegura que el backdrop esté por debajo del modal */
+}
+
+/* Estilo del Modal */
+.modal.show {
+  display: block;
+}
+
+.modal-dialog {
+  max-width: 500px;
+  margin: 15vh auto; /* Centra el modal verticalmente */
 }
 
 .modal-content {
-  background-color: white;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.modal-header {
+  background-color: #448615;
+  color: white;
+  padding: 15px;
+}
+
+.modal-body {
   padding: 20px;
-  border-radius: 8px;
-  width: 50%;
+}
+
+.modal-footer {
+  padding: 15px;
+  text-align: right;
+}
+
+/* Botón cerrar */
+.btn-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  line-height: 1;
+  opacity: 0.8;
+}
+
+.btn-close:hover {
+  opacity: 1;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 80PX;
+}
+
+.pagination-container button {
+  margin: 0 5px;
+  padding: 10px;
+}
+
+.pagination-container span {
+  margin: 0 10px;
+  font-size: 16px;
+}
+
+.description-text {
+  display: -webkit-box; /* Soporte para truncado con líneas */
+  -webkit-line-clamp: 1; /* Número de líneas visibles */
+  -webkit-box-orient: vertical; /* Orientación del contenedor */
+  overflow: hidden; /* Ocultar contenido adicional */
+  text-overflow: ellipsis; /* Mostrar '...' */
+  line-height: 1.5em; /* Ajusta según el diseño */
+  max-height: 4.5em; /* line-height * número de líneas */
+}
+.user-title-info {
+  display: flex;
+  align-items: center; /* Alinear verticalmente */
+  gap: 15px; /* Espaciado entre el ícono y el texto */
+  margin-bottom: 10px; /* Separación con la descripción */
+}
+
+.user-icon {
+  font-size: 30px; /* Tamaño del ícono */
+  color: #6c757d; /* Color gris */
+}
+
+.title-meta h4 {
+  margin: 0; /* Eliminar márgenes extra */
+  font-size: 1.2em; /* Ajustar el tamaño del título */
+}
+
+.title-meta .publication-meta {
+  font-size: 0.9em; /* Tamaño más pequeño para metadatos */
+  color: #6c757d; /* Color gris */
+  margin: 0;
 }

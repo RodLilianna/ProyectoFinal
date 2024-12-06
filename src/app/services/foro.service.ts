@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AuthService } from './auth.service'; // Importar AuthService
 
 @Injectable({
   providedIn: 'root',
@@ -9,36 +10,49 @@ export class ForoService {
   private postApiUrl = 'http://localhost:5255/api/Post';
   private topicApiUrl = 'http://localhost:5255/api/Topic';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
+  // Método para obtener las cabeceras con el token de autenticación
   private getHeaders(): HttpHeaders {
-    const token = localStorage.getItem('authToken'); // Cambiar según tu método de almacenamiento
+    const token = this.authService.getToken(); // Obtener el token desde AuthService
     return new HttpHeaders({
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token}`, // Enviar el token en la cabecera Authorization
     });
   }
 
+  // Obtener las publicaciones
   getPosts(): Observable<any[]> {
+    const headers = this.getHeaders();
     return this.http.get<any[]>(`${this.postApiUrl}/recent`, {
-      headers: this.getHeaders(),
+      headers: headers,
+      withCredentials: true, // Incluir las credenciales
     });
   }
 
+  // Obtener los temas
   getTopics(): Observable<any[]> {
+    const headers = this.getHeaders();
     return this.http.get<any[]>(this.topicApiUrl, {
-      headers: this.getHeaders(),
+      headers: headers,
+      withCredentials: true, // Incluir las credenciales
     });
   }
 
+  // Crear un nuevo tema
   createTopic(topic: any): Observable<any> {
+    const headers = this.getHeaders();
     return this.http.post<any>(this.topicApiUrl, topic, {
-      headers: this.getHeaders(),
+      headers: headers,
+      withCredentials: true, // Incluir las credenciales
     });
   }
 
+  // Crear una nueva publicación
   createPost(post: any): Observable<any> {
+    const headers = this.getHeaders();
     return this.http.post<any>(this.postApiUrl, post, {
-      headers: this.getHeaders(),
+      headers: headers,
+      withCredentials: true, // Incluir las credenciales
     });
   }
 }

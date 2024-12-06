@@ -8,7 +8,7 @@
       <img src="assets/circle-user.png" alt="User Icon" class="user-icon">
       <div class="user-text">
         <p class="user-greeting">Bienvenido/a,</p>
-        <p class="username">Angélica</p>
+        <p class="username">{{ username }}</p> <!-- Muestra el nombre de usuario -->
       </div>
     </div>
   </div>
@@ -27,7 +27,7 @@
   </nav>
 
   <div class="logout-section" *ngIf="isMenuOpen">
-    <a href="#logout" class="logout-btn"><i class="fa fa-sign-out-alt"></i> Cerrar sesión</a>
+    <a href="#" (click)="logout()" class="logout-btn"><i class="fa fa-sign-out-alt"></i> Cerrar sesión</a> <!-- Llama a la función logout -->
   </div>
 </aside>
 
