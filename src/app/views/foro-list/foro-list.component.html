@@ -16,8 +16,8 @@
 
   <div class="foro-container">
     <div class="search-bar">
-      <input type="text" class="form-control" placeholder="Buscar...">
-        <i class="fas fa-search search-icon"></i>
+      <input type="text" placeholder="Buscar publicaciones..." [(ngModel)]="searchTerm"(input)="filterPosts()"class="search-bar"/>
+      <i class="fas fa-search search-icon"></i>
 
       <select class="filter-categories">
         <option value="">Categorías</option>
@@ -53,7 +53,7 @@
           <i class="fas fa-user"></i> 
         </div>
         <div class="title-info">
-          <h4>{{ publicacion.titulo }}</h4> <!-- Título del topic -->
+          <h4>{{ publicacion.titulo }}</h4> 
           <p class="publication-meta">Publicado el {{ publicacion.fecha }}</p>
         </div>
       </div>
@@ -64,6 +64,23 @@
     </div>
   </div>
   
+  <div class="modal" *ngIf="showModal">
+    <div class="modal-content">
+      <h3>Añadir nueva entrada</h3>
+      <form #entryForm="ngForm" (ngSubmit)="submitPost(entryForm.value)">
+        <div>
+          <label for="titulo">Título del Topic:</label>
+          <input type="text" id="titulo" name="titulo" ngModel required>
+        </div>
+        <div>
+          <label for="descripcion">Contenido del Post:</label>
+          <textarea id="descripcion" name="descripcion" ngModel required></textarea>
+        </div>
+        <button type="submit" [disabled]="!entryForm.valid">Guardar</button>
+        <button type="button" (click)="toggleModal()">Cancelar</button>
+      </form>
+    </div>
+  </div>
   
     
     </div>

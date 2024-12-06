@@ -15,6 +15,8 @@ import { FormsModule } from '@angular/forms'; // Importar FormsModule
 export class ForoListComponent implements OnInit {
   publicaciones: any[] = [];
   showModal: boolean = false;
+  searchTerm: string = ''; // Texto de búsqueda
+  filteredPublicaciones: any[] = [];
 
   constructor(private foroService: ForoService) {}
 
@@ -47,27 +49,48 @@ export class ForoListComponent implements OnInit {
     );
   }
   
-  
+  filterPosts(): void {
+    const term = this.searchTerm.toLowerCase();
+    this.filteredPublicaciones = this.publicaciones.filter((pub) =>
+      pub.titulo.toLowerCase().includes(term) || pub.descripcion.toLowerCase().includes(term)
+    );
+  }
 
   toggleModal(): void {
     this.showModal = !this.showModal;
   }
 
   submitPost(formData: any): void {
-    const post = {
-      content: formData.descripcion,
-      userId: 'usuario123', // Ajusta este valor según la sesión del usuario
-      topicId: 1, // Cambia este valor según sea necesario
+    const topic = {
+      title: formData.titulo,
+      userId: 'usuario123', // Ajusta según la sesión actual
     };
 
-    this.foroService.createPost(post).subscribe(
-      (response) => {
-        console.log('Publicación creada:', response);
-        this.loadPosts(); // Recarga la lista de publicaciones
-        this.toggleModal(); // Cierra el modal
+    // Crear el topic primero
+    this.foroService.createTopic(topic).subscribe(
+      (topicResponse) => {
+        console.log('Topic creado:', topicResponse);
+
+        // Crear el post asociado al topic
+        const post = {
+          content: formData.descripcion,
+          userId: 'usuario123', // Ajusta según la sesión actual
+          topicId: topicResponse.id, // Usar el ID del topic recién creado
+        };
+
+        this.foroService.createPost(post).subscribe(
+          (postResponse) => {
+            console.log('Post creado:', postResponse);
+            this.loadPosts(); // Recargar publicaciones
+            this.toggleModal(); // Cerrar modal
+          },
+          (error) => {
+            console.error('Error al crear post:', error);
+          }
+        );
       },
       (error) => {
-        console.error('Error al crear publicación:', error);
+        console.error('Error al crear topic:', error);
       }
     );
   }

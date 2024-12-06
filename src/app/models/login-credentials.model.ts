@@ -1,6 +1,6 @@
 export interface LoginCredentials {
-    Email: string;
-    Password: string;
-    Error: string
-  }
-  
+  email: string;
+  password: string;
+  hasError: boolean;
+  error: string | null;
+}

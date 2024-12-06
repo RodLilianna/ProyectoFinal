@@ -73,8 +73,6 @@ export class RegistroComponent {
           window.alert(this.errorMessage);
         },
       });
-      
-      
     }
   }
 
@@ -82,38 +80,54 @@ export class RegistroComponent {
     if (this.tokenForm.valid) {
       const token = this.tokenForm.get('token')?.value;
       const userId = this.userId;
-
+  
       if (!userId) {
         console.error('userId no disponible para la confirmación.');
         window.alert('No se pudo obtener el ID de usuario.');
         return;
       }
-
+  
       this.registroService.confirmEmail(userId, token).subscribe({
         next: (response) => {
-          const message = response.message || 'Cuenta confirmada exitosamente.';
-          window.alert(message);
-          this.closeModal();
-          const storedUserId = localStorage.getItem('userId');
-          if (!storedUserId) {
-            console.error('El userId no está disponible en localStorage antes de redirigir.');
-            window.alert('Hubo un error al procesar el usuario. Inténtalo nuevamente.');
-            return;
+          if (response.message) {
+            window.alert(response.message);
+            this.closeModal();
+  
+            // Realiza el login automáticamente después de confirmar el correo
+            const email = this.registroForm.get('email')?.value;
+            const password = this.registroForm.get('password')?.value;
+  
+            const loginData = {
+              email,
+              password,
+              hasError: true,
+              error: '',
+            };
+  
+            this.registroService.login(loginData).subscribe({
+              next: (loginResponse) => {
+                // Guarda el token en localStorage
+                localStorage.setItem('authToken', loginResponse.token);
+  
+                // Redirige al formulario de tierra
+                this.router.navigate(['/registro2']);
+              },
+              error: (loginError) => {
+                console.error('Error al hacer login:', loginError);
+                window.alert('Error al iniciar sesión después de la confirmación.');
+              },
+            });
           }
-          this.router.navigate(['/registro2']);
-          
         },
         error: (err) => {
-          console.error('Error al confirmar el token:', err);
-          const errorMsg =
-            err.error?.message || 'Token inválido o expirado. Intenta nuevamente.';
-          window.alert(`Error: ${errorMsg}`);
+          window.alert(`Error: ${err.error?.message || 'Token inválido o expirado.'}`);
         },
       });
     } else {
       window.alert('Por favor ingrese el token para continuar.');
     }
   }
+  
 
   openModal(): void {
     const modalElement = document.getElementById('tokenModal');

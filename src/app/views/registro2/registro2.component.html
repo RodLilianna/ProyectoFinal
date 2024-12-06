@@ -1,119 +1,100 @@
 <div class="container-fluid">
-    <div class="content">
-      <div class="row vh-100 d-flex align-items-center justify-content-center">
-        <div class="col-sm-9 col-md-5 col-lg-5">
-          <form [formGroup]="registro2Form" (ngSubmit)="onSubmit()">
-            <div class="row px-5 py-3 rounded-3 mt-0 pt-0 border border-bottom-0 border-top-0 shadow-lg overflow-auto"
-              style="background:#EEEEEE; max-height: 500px; overflow-y: scroll; scrollbar-width: none; -ms-overflow-style: none;">
-              <img src="assets/logo7.png" alt="" class="d-block mx-auto mt-3 pt-0" style="width: 250px;" height="150px">
-              
-              <!-- Tipo de Suelo -->
-              <div class="col-12 mb-3">
-                <label for="tipoDeSuelo" class="form-label text-start">¿Cuál es el tipo de suelo predominante en tu terreno?</label>
-                <select class="d-block rounded-3 large" formControlName="tipoDeSuelo" aria-label="Default select example">
-                  <option value=""></option>
-                  <option value="Arenoso">Arenoso</option>
-                  <option value="Arcilloso">Arcilloso</option>
-                  <option value="Franco">Franco</option>
-                  <option value="Limoso">Limoso</option>
-                </select>
-              </div>
-  
-              <!-- Humedad del Terreno -->
-              <div class="col-12 mb-3">
-                <label for="humedadTerreno" class="form-label text-start">¿El terreno es generalmente húmedo o seco?</label>
-                <select class="d-block rounded-3 large" formControlName="humedadTerreno" aria-label="Default select example">
-                  <option value=""></option>
-                  <option value="Muy húmedo">Muy húmedo</option>
-                  <option value="Moderadamente">Moderadamente</option>
-                  <option value="Húmedo">Húmedo</option>
-                  <option value="Seco">Seco</option>
-                </select>
-              </div>
-  
-              <!-- Drenaje -->
-              <div class="col-12 mb-3">
-                <label for="drenaje" class="form-label text-start">¿Qué tan bien drena el agua en tu terreno?</label>
-                <select class="d-block rounded-3 large" formControlName="drenaje" aria-label="Default select example">
-                  <option value=""></option>
-                  <option value="Muy bien">Muy bien</option>
-                  <option value="Moderadamente bien">Moderadamente bien</option>
-                  <option value="Mal">Mal</option>
-                  <option value="Se encharca con facilidad">Se encharca con facilidad</option>
-                </select>
-              </div>
-  
-              <!-- Luz Solar -->
-              <div class="col-12 mb-3">
-                <label for="luzSolar" class="form-label text-start">¿Cuánta luz solar recibe el área de siembra diariamente?</label>
-                <select class="d-block rounded-3 large" formControlName="luzSolar" aria-label="Default select example">
-                  <option value=""></option>
-                  <option value="Menos de 4 horas">Menos de 4 horas</option>
-                  <option value="4-6 horas">4-6 horas</option>
-                  <option value="6-8 horas">6-8 horas</option>
-                  <option value="Más de 8 horas">Más de 8 horas</option>
-                </select>
-              </div>
-  
-              <!-- Tipo de Riego -->
-              <div class="col-12 mb-3">
-                <label for="tipoDeRiego" class="form-label text-start">¿Qué tipo de riego utilizas en tu terreno?</label>
-                <select class="d-block rounded-3 large" formControlName="tipoDeRiego" aria-label="Default select example">
-                  <option value=""></option>
-                  <option value="Por goteo">Por goteo</option>
-                  <option value="Aspersión">Aspersión</option>
-                  <option value="Inundación">Inundación</option>
-                  <option value="Riego manual">Riego manual</option>
-                </select>
-              </div>
-  
-              <!-- Tipo de Fertilización -->
-              <div class="col-12 mb-3">
-                <label for="tipoDeFertilizacion" class="form-label text-start">¿Qué tipo de fertilización sueles aplicar?</label>
-                <select class="d-block rounded-3 large" formControlName="tipoDeFertilizacion" aria-label="Default select example">
-                  <option value=""></option>
-                  <option value="Orgánica">Orgánica</option>
-                  <option value="Química">Química</option>
-                  <option value="Ninguna">Ninguna</option>
-                </select>
-              </div>
-  
-              <!-- Problemas de Plagas -->
-              <div class="col-12 mb-3">
-                <label for="plagas" class="form-label text-start">¿Has tenido problemas de plagas en tus cultivos anteriores?</label>
-                <select class="d-block rounded-3 large" formControlName="plagas" aria-label="Default select example">
-                  <option value=""></option>
-                  <option value="Sí">Sí</option>
-                  <option value="No">No</option>
-                </select>
-              </div>
+  <div class="content">
+    <div class="row vh-100 d-flex align-items-center justify-content-center">
+      <div class="col-sm-9 col-md-5 col-lg-5">
+        <form [formGroup]="registro2Form" (ngSubmit)="onSubmit()">
+          <div class="row px-5 py-3 rounded-3 mt-0 pt-0 border border-bottom-0 border-top-0 shadow-lg overflow-auto"
+            style="background:#EEEEEE; max-height: 500px; overflow-y: scroll; scrollbar-width: none; -ms-overflow-style: none;">
+            <img src="assets/logo7.png" alt="" class="d-block mx-auto mt-3 pt-0" style="width: 250px;" height="150px">
 
-              <!-- Tamaño del Terreno -->
-              <div class="col-12 mb-3">
-                <label for="tamanoTerreno" class="form-label text-start">¿Cuál es el tamaño aproximado de tu terreno en hectáreas?</label>
-                <select class="d-block rounded-3 large" formControlName="tamanoTerreno" aria-label="Default select example">
-                  <option value=""></option>
-                  <option value="Menos de 1 ha">Menos de 1 ha</option>
-                  <option value="1-5 ha">1-5 ha</option>
-                  <option value="5-10 ha">5-10 ha</option>
-                  <option value="Más de 10 ha">Más de 10 ha</option>
-                </select>
-              </div>
-
-  
-              <!-- Botón de Enviar -->
-              <div class="col-12 mb-3 text-center">
-                <button type="submit" class="btn px-5 bg-danger text-light">REGISTRARME</button>
-              </div>
-  
-              <!-- Enlace para iniciar sesión -->
-              <div class="col-12 mb-3 text-center">
-                <label class="fw-medium">¡Ya tengo una cuenta, <a class="text-danger" href="/login">iniciar sesión</a>!</label>
-              </div>
+            <!-- Tipo de Suelo -->
+            <div class="col-12 mb-3">
+              <label for="tipoDeSuelo" class="form-label text-start">¿Cuál es el tipo de suelo predominante en tu terreno?</label>
+              <select class="d-block rounded-3 large" formControlName="tipoDeSuelo" aria-label="Tipo de Suelo">
+                <option value=""></option>
+                <option value="Arcilloso/Franco">Arcilloso/Franco</option>
+                <option value="Arenoso/Limoso">Arenoso/Limoso</option>
+              </select>
             </div>
-          </form>
-        </div>
+
+            <!-- Humedad del Terreno -->
+            <div class="col-12 mb-3">
+              <label for="humedadTerreno" class="form-label text-start">¿El terreno es generalmente húmedo o seco?</label>
+              <select class="d-block rounded-3 large" formControlName="humedadTerreno" aria-label="Humedad del Terreno">
+                <option value=""></option>
+                <option value="Baja/Moderada">Baja/Moderada</option>
+                <option value="Alta">Alta</option>
+              </select>
+            </div>
+
+            <!-- Drenaje -->
+            <div class="col-12 mb-3">
+              <label for="drenaje" class="form-label text-start">¿Qué tan bien drena el agua en tu terreno?</label>
+              <select class="d-block rounded-3 large" formControlName="drenaje" aria-label="Drenaje">
+                <option value=""></option>
+                <option value="Buen Drenaje/Moderado">Buen Drenaje/Moderado</option>
+                <option value="Deficiente">Deficiente</option>
+              </select>
+            </div>
+
+            <!-- Luz Solar -->
+            <div class="col-12 mb-3">
+              <label for="luzSolar" class="form-label text-start">¿Cuánta luz solar recibe el área de siembra diariamente?</label>
+              <select class="d-block rounded-3 large" formControlName="luzSolar" aria-label="Luz Solar">
+                <option value=""></option>
+                <option value="Alta/Moderada">Alta/Moderada</option>
+                <option value="Baja">Baja</option>
+              </select>
+            </div>
+
+            <!-- Tipo de Riego -->
+            <div class="col-12 mb-3">
+              <label for="tipoDeRiego" class="form-label text-start">¿Qué tipo de riego utilizas en tu terreno?</label>
+              <select class="d-block rounded-3 large" formControlName="tipoDeRiego" aria-label="Tipo de Riego">
+                <option value=""></option>
+                <option value="Por aspersión/goteo">Por aspersión/goteo</option>
+                <option value="Inundación/manual">Inundación/manual</option>
+              </select>
+            </div>
+
+            <!-- Tipo de Fertilización -->
+            <div class="col-12 mb-3">
+              <label for="tipoDeFertilizacion" class="form-label text-start">¿Qué tipo de fertilización utilizas?</label>
+              <select class="d-block rounded-3 large" formControlName="tipoDeFertilizacion" aria-label="Tipo de Fertilización">
+                <option value=""></option>
+                <option value="Orgánicos/Inorgánicos">Orgánicos/Inorgánicos</option>
+                <option value="Orgánicos">Orgánicos</option>
+              </select>
+            </div>
+
+            <!-- Plagas -->
+            <div class="col-12 mb-3">
+              <label for="plagas" class="form-label text-start">¿Has tenido problemas de plagas?</label>
+              <select class="d-block rounded-3 large" formControlName="problemasDePlagas" aria-label="Plagas">
+                <option value=""></option>
+                <option value="true">Sí</option>
+                <option value="false">No</option>
+              </select>
+            </div>
+
+            <!-- Tamaño del Terreno -->
+            <div class="col-12 mb-3">
+              <label for="tamanoTerreno" class="form-label text-start">¿Cuál es el tamaño de tu terreno?</label>
+              <select class="d-block rounded-3 large" formControlName="tamanoTerreno" aria-label="Tamaño del Terreno">
+                <option value=""></option>
+                <option value="15.0">Menos de 1 ha</option>
+                <option value="20.0">1-5 ha</option>
+                <option value="30.0">Más de 5 ha</option>
+              </select>
+            </div>
+
+            <!-- Botón -->
+            <div class="col-12 mb-3 text-center">
+              <button type="submit" class="btn btn-primary px-5 py-2 rounded-3">Guardar</button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-  
+</div>

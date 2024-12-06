@@ -1,22 +1,38 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-import { LoginCredentials } from '../models/login-credentials.model'; // Asegúrate de que este archivo existe
+import { catchError, tap } from 'rxjs/operators';
+import { LoginCredentials } from '../models/login-credentials.model'; // Asegúrate de que este archivo exista
+import jwt_decode from 'jwt-decode';
+import { AuthResponse } from '../models/auth-response.model'; // Asegúrate de importar la interfaz correctamente
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:5255/api/User/Authentication';  // URL de autenticación
-  private forgotPasswordUrl = 'http://localhost:7125/api/User/forgot-password';  // URL para olvido de contraseña
-  private resetPasswordUrl = 'http://localhost:7125/api/User/reset-password';  // URL para resetear contraseña
-
+  private apiUrl = '/api/User/Authentication';  // URL para login
+  private forgotPasswordUrl = '/api/User/forgot-password';  // URL para solicitud de contraseña
+  private resetPasswordUrl = '/api/User/reset-password';  // URL para restablecer contraseña
+  
   constructor(private http: HttpClient) {}
-
+  
   // Método de autenticación
-  authenticate(userData: LoginCredentials): Observable<any> {
-    return this.http.post(this.apiUrl, userData).pipe(catchError(this.handleError));
+  authenticate(userData: LoginCredentials): Observable<AuthResponse> {  // Aquí se cambia el tipo de la respuesta
+    return this.http.post<AuthResponse>(this.apiUrl, userData).pipe(
+      catchError(this.handleError),
+      // Procesar la respuesta cuando se reciba el token
+      tap((response) => {
+        if (response && response.token) {
+          // Almacenar el token en el localStorage
+          localStorage.setItem('authToken', response.token);
+        }
+      })
+    );
+  }
+
+  // Método para obtener el token almacenado
+  getToken(): string | null {
+    return localStorage.getItem('authToken');
   }
 
   // Método para enviar correo de recuperación de contraseña
@@ -31,6 +47,20 @@ export class AuthService {
     return this.http
       .post(this.resetPasswordUrl, payload)
       .pipe(catchError(this.handleError));
+  }
+
+  // Método para obtener el ID del usuario desde el token
+  getUserId(): string | null {
+    const token = localStorage.getItem('authToken');
+    if (!token) return null;
+
+    try {
+      const decodedToken: any = jwt_decode(token);
+      return decodedToken.userId || decodedToken.sub;
+    } catch (error) {
+      console.error('Error al decodificar el token:', error);
+      return null;
+    }
   }
 
   // Manejo de errores

@@ -36,24 +36,27 @@ export class LogInComponent {
       this.errorMessage = 'Por favor, complete todos los campos.';
       return;
     }
-
+  
     const credentials: LoginCredentials = {
-      Email: this.email,
-      Password: this.password,
-      Error: ''
+      email: this.email,
+      password: this.password,
+      error: '',
+      hasError: false
     };
-
+  
     this.authService.authenticate(credentials).subscribe({
       next: (response) => {
         console.log('Inicio de sesión exitoso:', response);
         localStorage.setItem('authToken', response.token);
         this.router.navigate(['/dashboard']);
       },
-      error: () => {
-        this.errorMessage = 'Credenciales incorrectas. Intente nuevamente.';
+      error: (err) => {
+        // Si el servidor proporciona un error detallado
+        this.errorMessage = err.error ? err.error : 'Credenciales incorrectas. Intente nuevamente.';
       },
     });
   }
+  
 
   // Recuperar contraseña
   onForgotPassword(): void {

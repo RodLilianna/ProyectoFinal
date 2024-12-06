@@ -7,8 +7,9 @@ import { catchError, map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class RegisterService {
-  private registerUrl = 'http://localhost:5255/api/User/Register'; // URL para registrar al usuario
-  private confirmEmailUrl = 'http://localhost:5255/api/User/confirm-email'; // URL para confirmar el correo del usuario
+  private registerUrl = '/api/User/Register';  // URL para registrar al usuario
+  private confirmEmailUrl = '/api/User/confirm-email';  // URL para confirmar el correo del usuario
+  private loginUrl = '/api/User/Authentication';  // URL para autenticación (login)
 
   constructor(private http: HttpClient) {}
 
@@ -50,6 +51,12 @@ export class RegisterService {
           }
         })
       );
+  }
+
+  // Método para realizar login
+  login(credentials: { email: string; password: string; hasError: boolean; error: string | null }): Observable<any> {
+    return this.http.post(this.loginUrl, credentials).pipe(catchError(this.handleError));
+    
   }
   
 
