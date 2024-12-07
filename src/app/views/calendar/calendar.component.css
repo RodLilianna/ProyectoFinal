@@ -9,10 +9,10 @@
     display: none;
 }
 
-.exportar {
+/* .exportar {
     background-color: #448615;
     color: white;
-}
+} */
 
 .gradient {
     position: relative;
@@ -39,14 +39,14 @@
     color: white; 
 }
 
-btn.exportar{
+/* btn.exportar{
     background-color: #448615;
-}
+} */
 
 table{
 
-    width: 1500px;
-    height: 350px;
+    width: 1670px;
+    height: 600px;
     color: #ffffff;
 }
 
@@ -63,5 +63,41 @@ table{
     max-height: 450px; 
     overflow-y: auto; 
     padding-right: 15px;
+}
+
+.dia {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    border: 1px solid #ffffff;
+    border-radius: 50%; 
+    margin-left: 20px;
+    padding-top: 7px;
+    color: rgb(255, 254, 254);
+    margin-bottom: 30px;
+}
+
+.dia-actual {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+}
+
+.text-muted {
+    color: rgb(167, 59, 59);
+}
+
+.day-other-month {
+    background-color: hsla(0, 0%, 47%, 0.568); 
+    color: #611b1b !important; 
+}
+
+.task{
+    font-size: larger;
+    border-radius: 5%;
+    padding: 10px;
+    width: 100%;
+    background-color: #ffffff8d;
 }
 

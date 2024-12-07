@@ -1,97 +1,198 @@
 <div class="container-fluid gradient pb-5">
     <img src="/assets/bgleaves.png" alt="" class="position-absolute top-0 start-0 mt-5 pt-5" width="400px" height="600px">
-            <img src="/assets/bgleaves2.png" alt="" class="position-absolute bottom-0 end-0" width="600px" height="400px">
+    <img src="/assets/bgleaves2.png" alt="" class="position-absolute bottom-0 end-0" width="600px" height="400px">
             <div class="content">
                 <header class="">
-                    <nav class="my-3 mx-2 d-flex align-items-center justify-content-between">
+                    <nav class="my- mx-2 d-flex align-items-center justify-content-between">
                         <div class="d-flex align-items-center">
-                            <<app-menu></app-menu>
-                            <img src="/assets/logo5.png" alt="" width="200px" height="150px" class="d-inline ms-2">
-                            <label for="" class="form-label fs-1 text-light ms-2">Calendario de tareas</label>
+                            <app-menu class="btn open-menu-btn"></app-menu>
+                            <img src="/assets/logo5.png" alt="" width="220px" height="170px" class="d-inline ms-2">
+                            <label for="" class="form-label fs-1 text-light ms-2">Calendario</label>
                         </div>
                         <div class="d-flex align-items-center">
-                            <button class="btn"><i class="bi bi-person-circle fs-3 text-light"></i></button>
-                            <button class="btn"><i class="bi bi-caret-down fs-3 text-light"></i></button>
+                            <button class="btn"><i class="bi bi-person-circle fs-2 text-light"></i></button>
+                            <button class="btn " data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-caret-down fs-2 text-light" ></i></button>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" (click)="redirectToLogIn()">Cerrar sesion</a></li>
+                            </ul>
                         </div>
                     </nav>
+                    <hr class="custom-hr mb-4">
                 </header>
             
                 <main>
-                    <div class=" text-center mb-4">
-                        <div class="d-inline border rounded-5 py-4 px-4">
-                            <label for="" class="fs-4 text-light px-2">Septiembre 2024</label>
-                            <button class="btn"><i class="bi bi-caret-up-fill text-light"></i></button>
-                            <button class="btn"><i class="bi bi-caret-down-fill text-light"></i></button>
+                    <div class="text-center mb-4">
+                        <div class="d-inline border rounded-5 py-4 px-4" style="margin-left: 650px;">
+                        <label class="fs-4 text-light px-2">{{ currentMonth }} {{ currentYear }}</label>
+                        <button class="btn" (click)="changeMonth(-1)"><i class="bi bi-caret-up-fill text-light fs-4"></i></button>
+                        <button class="btn" (click)="changeMonth(1)"><i class="bi bi-caret-down-fill text-light fs-4"></i></button>
                         </div>
-            
-                        <div class="d-inline float-end">
-                            <button class="btn"><i class="bi bi-view-list text-light fs-2"></i></button>
-                            <button class="btn"><i class="bi bi-search text-light fs-2"></i></button>
-                            <button class="btn"><i class="bi bi-plus-lg text-light fs-2"></i></button>
+
+                        <div class="d-inline py-4 px-4 opts text-end" style="margin-left: 300px;">
+                            <button class="btn" (click)="openCreateTaskModal()">
+                                <i class="bi bi-plus-lg text-light fs-2 text-end"></i>
+                            </button>
+                            <button class="btn" (click)="openListTasksModal()">
+                                <i class="bi bi-view-list text-light fs-2 text-end"></i>
+                            </button>
+                            <input type="text" [(ngModel)]="searchValue" placeholder="Buscar..." class="rounded-2 p-2 mx-2" />
+                                <button class="btn" (click)="buscarTareaPorNombre(searchValue)"><i class="bi bi-search text-light fs-2"></i></button>
+                        </div>
+
+                    <div class="modal fade" id="createTaskModal" tabindex="-1" aria-labelledby="createTaskModalLabel" aria-hidden="true" data-bs-backdrop="false">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="createTaskModalLabel">Crear tarea</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <input [(ngModel)]="newTask.title" placeholder="Título" class="form-control mb-3" />
+                                    <textarea [(ngModel)]="newTask.description" placeholder="Descripción" class="form-control mb-3"></textarea>
+                                    <input [(ngModel)]="newTask.startDate" type="date" class="form-control mb-3" />
+                                    <input [(ngModel)]="newTask.endDate" type="date" class="form-control mb-3" />
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary text-light py-2 ms-2" data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-success text-light" (click)="createTask()">Crear tarea</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <table class="table-bordered border-light text-light my-4 custom-opacity">
-                        <thead class="text-center m-3">
-                            <tr class="">
-                                <th scope="col" class="text-light">Domingo</th>
-                                <th scope="col" class="text-light">Lunes</th>
-                                <th scope="col" class="text-light">Martes</th>
-                                <th scope="col" class="text-light">Miércoles</th>
-                                <th scope="col" class="text-light">Jueves</th>
-                                <th scope="col" class="text-light">Viernes</th>
-                                <th scope="col" class="text-light">Sábado</th>
-                            </tr>
+
+                    <div class="modal fade" id="listTasksModal" tabindex="-1" aria-labelledby="listTasksModalLabel" aria-hidden="true" data-bs-backdrop="false">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="listTasksModalLabel">Listado de Tareas</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <ul>
+                            <li class="text-start" *ngFor="let task of tasks">
+                                <span>{{ task.title }}</span>
+                                <p class="mb-0">{{ task.description }}</p>
+                                <button class="btn btn-success text-light detalles float-end " (click)="openTaskDetailsModal(task.id)">Ver detalles</button>
+                                <hr class="bg-dark mt-5">
+                            </li>
+                            </ul>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary text-light py-2 ms-2" data-bs-dismiss="modal">Cancelar</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="modal fade" id="taskDetailsModal" tabindex="-1" aria-labelledby="taskDetailsModalLabel" aria-hidden="true" data-bs-backdrop="false">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="taskDetailsModalLabel">{{ selectedTask?.title }}</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body text-start">
+                              <p> <strong>Titulo:</strong> {{ selectedTask?.title }}</p>
+                              <p> <strong>Descripción:</strong> {{ selectedTask?.description }}</p>
+                              <p><strong>Fecha Inicio:</strong> {{ selectedTask?.startDate | date:'dd/MM/yyyy' }}</p>
+                              <p><strong>Fecha Fin:</strong> {{ selectedTask?.endDate | date:'dd/MM/yyyy' }}</p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-success text-light" (click)="openEditModal()">Editar</button>
+                              <button type="button" class="btn btn-danger text-light" (click)="confirmDelete()">Eliminar</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    <div class="modal fade" id="messageModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="false">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title">{{ modalTitulo }}</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <p>{{ modalMensaje }}</p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary text-light py-2 ms-2" data-bs-dismiss="modal">Cancelar</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal fade" id="editTaskModal" tabindex="-1" aria-labelledby="editTaskModalLabel" aria-hidden="true" data-bs-backdrop="false">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="editTaskModalLabel">Editar Tarea</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body text-start">
+                              <form (ngSubmit)="updateTask()">
+                                <div>
+                                  <label for="taskTitle"class="mt-2">Título:</label>
+                                  <input id="taskTitle" [(ngModel)]="selectedTask.title" name="title" required class="form-control" />
+                                </div>
+                                <div>
+                                  <label for="taskDescription" class="mt-2">Descripción:</label>
+                                  <textarea id="taskDescription" [(ngModel)]="selectedTask.description" name="description" class="form-control" required></textarea>
+                                </div>
+                                <div>
+                                  <label for="taskStartDate" class="mt-2">Fecha de Inicio:</label>
+                                  <input id="taskStartDate" [(ngModel)]="selectedTask.startDate" name="startDate" type="date" class="form-control" required />
+                                </div>
+                                <div>
+                                  <label for="taskEndDate" class="mt-2">Fecha de Fin:</label>
+                                  <input id="taskEndDate" [(ngModel)]="selectedTask.endDate" name="endDate" type="date" class="form-control" required />
+                                </div>
+                                <div class="float-end" class="mt-2">
+                                  <button type="submit" class="btn btn-success text-light float-end">Actualizar Tarea</button>
+                                  <button type="button" class="btn btn-secondary text-light py-2 ms-2" data-bs-dismiss="modal">Cancelar</button>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                
+                    <table class="table-bordered border-light text-light my-4 w-100">
+                        <thead>
+                        <tr class="text-center">
+                            <th class="text-light">Domingo</th>
+                            <th class="text-light">Lunes</th>
+                            <th class="text-light">Martes</th>
+                            <th class="text-light">Miércoles</th>
+                            <th class="text-light">Jueves</th>
+                            <th class="text-light">Viernes</th>
+                            <th class="text-light">Sábado</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row"></th>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th scope="row"></th>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th scope="row"></th>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th scope="row"></th>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th scope="row"></th>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                            <tr *ngFor="let week of daysOfMonth | chunk: 7">
+                            <td
+                                *ngFor="let day of week"
+                                [class.text-muted]="!day.isCurrentMonth"
+                                [class.day-other-month]="!day.isCurrentMonth">
+
+                                <span
+                                [ngClass]="{
+                                    'dia': true,
+                                    'dia-actual': day.isToday,
+                                    'dia-other-month': !day.isCurrentMonth
+                                }"
+                                >
+                                {{ day.date.getDate() }}
+                                </span>
+                                <div *ngFor="let task of getTasksForDay(day.date)" class="d-inline">
+                                    <span class="task d-inline m-4 text-light fw-bold  w-100" (click)="openTaskDetailsModal(task.id)">{{ task.title }}</span>
+                                </div>
+                            </td>
                             </tr>
                         </tbody>
                     </table>
             
-                    <button class="btn exportar text-light rounded-5 px-5" style="background-color: #448615;margin-left: 150px;">Exportar</button>
-                </main>
-            </div>
+                    <!-- <button class="btn exportar text-light rounded-5 px-5 fs-5" style="background-color: #448615;margin-left: 150px;">Exportar</button>
+            -->
+                
         </div>
