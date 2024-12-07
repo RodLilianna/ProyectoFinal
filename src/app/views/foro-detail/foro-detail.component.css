@@ -102,17 +102,21 @@
 }
 
 .user-icon {
-  margin-right: 8px; /* Espacio entre el ícono y el texto */
+  margin-right: 15px; /* Espacio entre el ícono y el texto */
+  height: 25PX;
 }
 
 .title-meta {
   display: flex;
   flex-direction: column;
+  padding-left: 5px;
 }
 
 .publication-meta {
   font-size: 0.85rem;
   color: #6c757d;
+  padding-left: 5px;
+
 }
 
 #more{
@@ -123,7 +127,7 @@
 }
 
 .separator{
-  height: 10px;
+  height: 15px;
 }
 .title-info {
   display: flex;

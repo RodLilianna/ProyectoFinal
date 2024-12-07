@@ -86,7 +86,7 @@ body, .dashboard-container {
   grid-row: 3 / 5;
 }
 
-.notificaciones {
+.recomendaciones {
   grid-column: 3 / 4;
   grid-row: 3 / 5;
 }
@@ -156,20 +156,20 @@ body, .dashboard-container {
   object-fit: cover;
 }
 
-.humidity-value {
+.humidity-value, .temperature-value {
   font-size: 3rem;
   font-weight: bold;
   color: #ffffff;
 }
 
-.tareas ul, .notificaciones ul {
+.tareas ul, .recomendaciones ul {
   list-style: none;
   padding: 0;
   text-align: left;
   font-weight: bolder;
 }
 
-.tareas ul li, .notificaciones ul li {
+.tareas ul li, .recomendaciones ul li {
   font-size: 1.2rem;
   padding: 5px 0;
   display: block;
@@ -187,22 +187,17 @@ body, .dashboard-container {
   font-weight: lighter;
 }
 
-.notificaciones .card-content {
+.recomendaciones .card-content {
   border: 1px solid white;
   padding: 10px;
   border-radius: 5px;
   margin-bottom: 10px;
 }
 
-.card-content h6.notification-title {
+.card-content h6.recomendaciones-title {
   font-size: 1rem;
   font-weight: bold;
   color: #ffffff;
   text-align: left;
 
-}
-
-.card-content p {
-  font-size: 1.1rem;
-  color: #ffffff;
 }

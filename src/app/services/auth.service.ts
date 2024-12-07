@@ -132,4 +132,6 @@ export class AuthService {
     const decodedToken = this.decodeToken(token);
     return decodedToken.name || decodedToken.username || null; // Ajusta según la estructura del token
   }
+
+  
 }

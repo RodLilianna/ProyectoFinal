@@ -16,52 +16,48 @@
     <div class="grid-container">
       <div class="card temperatura">
         <h5>TEMPERATURA</h5>
-        <img src="/assets/tempertura.png" class="card-image" alt="Temperatura">
+        <p class=" temperature-value" >{{ temperature }}°C</p>  <!-- Mostrar la temperatura obtenida -->
       </div>
       <div class="card humedad">
         <h5>HUMEDAD</h5>
-        <p class="humidity-value">12%</p>
-        <p>Normal</p>
+        <p class="humidity-value">{{ humidity }}%</p>  <!-- Mostrar la humedad obtenida -->
+        <p>{{ weatherDescription }}</p>  <!-- Descripción del clima -->
       </div>
       <div class="card insumos">
         <h5>INSUMOS EN STOCK</h5>
         <img src="/assets/insumos.png" class="card-image-full" alt="Insumos en Stock">
       </div>
+
       <div class="card tareas text-left">
         <h5>PRÓXIMAS TAREAS</h5>
         <ul>
-          <li>
-            <input type="checkbox">
-            <label>Revisión de cultivos</label>
-            <p class="due-date">Hoy</p>
-          </li>
-          <li>
-            <input type="checkbox">
-            <label>Mantenimiento de equipos</label>
-            <p class="due-date">07/11/2024</p>
+          <li *ngFor="let tarea of tareas">
+            <input type="checkbox" [checked]="tarea.isCompleted">
+            <label>{{ tarea.title }}</label>
+            <p class="due-date">{{ tarea.startDate | date: 'shortDate' }}</p>
           </li>
         </ul>
       </div>
+      
       <div class="card riesgo text-left">
         <h5>PRECIPITACIÓN VS RIESGO</h5>
         <img src="/assets/graphic.png" class="card-image-large" alt="Gráfico de Precipitación vs Riesgo">
       </div>
-      <div class="card recomendaciones text-left">
+      <div class="card recomendaciones">
         <h5>RECOMENDACIONES</h5>
-        <div class="card-content">
-          <h6 class="recommendation-title">Mejorar Riego</h6>
-          <p>Considera aumentar la frecuencia de riego debido a la baja humedad registrada.</p>
-        </div>
-        <div class="card-content">
-          <h6 class="recommendation-title">Control de Temperatura</h6>
-          <p>Implementa un sistema de ventilación para mantener una temperatura óptima.</p>
-        </div>
-        <div class="card-content">
-          <h6 class="recommendation-title">Ajuste de Insumos</h6>
-          <p>Reabastece insumos antes del 10/12/2024 para evitar faltantes.</p>
-        </div>
+        <div class="content">
+          <div class="grid-container">
+            <div *ngFor="let recomendacion of recomendaciones; let i = index">
+              <!-- Mostrar las tres primeras recomendaciones -->
+              <div *ngIf="i < 3">
+                <p><strong>Descripción:</strong> {{ recomendacion.recomendacion.descripcionRecomendacion }}</p>
+                <p><strong>Razón:</strong> {{ recomendacion.recomendacion.razonRecomendacion }}</p>
+                <p><strong>Pasos a seguir:</strong> {{ recomendacion.recomendacion.pasosASeguir }}</p>
+                <p><strong>Consejos de cuidado:</strong> {{ recomendacion.recomendacion.consejosDeCuidado }}</p>
+              </div>
+            </div>
+          </div>
+        </div>       
       </div>
-      
     </div>
   </div>
-</div>
