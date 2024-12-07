@@ -23,10 +23,15 @@
         <p class="humidity-value">{{ humidity }}%</p>  <!-- Mostrar la humedad obtenida -->
         <p>{{ weatherDescription }}</p>  <!-- Descripción del clima -->
       </div>
+
       <div class="card insumos">
         <h5>INSUMOS EN STOCK</h5>
-        <img src="/assets/insumos.png" class="card-image-full" alt="Insumos en Stock">
+        <div class="chart-container">
+          <canvas id="inventoryChart"></canvas>
+        </div>
       </div>
+      
+
 
       <div class="card tareas text-left">
         <h5>PRÓXIMAS TAREAS</h5>
@@ -41,23 +46,23 @@
       
       <div class="card riesgo text-left">
         <h5>PRECIPITACIÓN VS RIESGO</h5>
-        <img src="/assets/graphic.png" class="card-image-large" alt="Gráfico de Precipitación vs Riesgo">
+        <canvas id="precipitationChart" width="400" height="200"></canvas>
       </div>
-      <div class="card recomendaciones">
+      
+
+      <div class="recomendaciones">
         <h5>RECOMENDACIONES</h5>
-        <div class="content">
-          <div class="grid-container">
-            <div *ngFor="let recomendacion of recomendaciones; let i = index">
-              <!-- Mostrar las tres primeras recomendaciones -->
-              <div *ngIf="i < 3">
-                <p><strong>Descripción:</strong> {{ recomendacion.recomendacion.descripcionRecomendacion }}</p>
-                <p><strong>Razón:</strong> {{ recomendacion.recomendacion.razonRecomendacion }}</p>
-                <p><strong>Pasos a seguir:</strong> {{ recomendacion.recomendacion.pasosASeguir }}</p>
-                <p><strong>Consejos de cuidado:</strong> {{ recomendacion.recomendacion.consejosDeCuidado }}</p>
-              </div>
+        <div class="recommendations-container">
+          <div *ngFor="let recomendacion of recomendaciones; let i = index">
+            <div *ngIf="i < 3">
+              <p><strong>Descripción:</strong> {{ recomendacion.recomendacion.descripcionRecomendacion }}</p>
+              <p><strong>Razón:</strong> {{ recomendacion.recomendacion.razonRecomendacion }}</p>
+              <p><strong>Pasos a seguir:</strong> {{ recomendacion.recomendacion.pasosASeguir }}</p>
+              <p><strong>Consejos de cuidado:</strong> {{ recomendacion.recomendacion.consejosDeCuidado }}</p>
             </div>
           </div>
-        </div>       
+        </div>
       </div>
+      
     </div>
   </div>

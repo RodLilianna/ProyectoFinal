@@ -5,6 +5,7 @@ import { AuthService } from './auth.service';  // Asegurarse de que AuthService 
 import { RecomendacionViewModel } from '../models/recomendacion.model';
 import { TaskViewModel} from "../models/task.model";
 import { WeatherDataViewModel } from '../models/weather.model';  // Importar el modelo WeatherDataViewModel
+import { InventoryItem } from '../models/inventory.model';  // Importar el modelo
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +13,7 @@ import { WeatherDataViewModel } from '../models/weather.model';  // Importar el 
 export class DashboardService {
   private recommendationApiUrl = '/api/FormTierra/GetFormsByUserId';  // Endpoint para obtener las recomendaciones
   private weatherApiUrl = '/api/WeatherData'; 
+  private inventoryApiUrl = '/api/Inventory';  // Endpoint de la API para obtener los insumos en stock
 
   constructor(private http: HttpClient) {}
 
@@ -89,6 +91,27 @@ export class DashboardService {
         catchError((error) => {
           console.error('Error al obtener los datos del clima:', error);
           return throwError(() => new Error('Error al obtener los datos del clima.'));
+        })
+      );
+  }
+
+  // Método para obtener los datos del inventario
+  getInventoryData(): Observable<InventoryItem[]> {
+    const authToken = localStorage.getItem('authToken');  // Obtener token del localStorage
+
+    if (!authToken) {
+      return throwError(() => new Error('Token no encontrado. No se pueden obtener los datos del inventario.'));
+    }
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${authToken}`,  // Se agrega el token en la cabecera
+    });
+
+    return this.http.get<InventoryItem[]>(this.inventoryApiUrl, { headers })
+      .pipe(
+        catchError((error) => {
+          console.error('Error al obtener los datos del inventario:', error);
+          return throwError(() => new Error('Error al obtener los datos del inventario.'));
         })
       );
   }
