@@ -18,7 +18,7 @@ export class NewsComponent {
   constructor(private router: Router) {}
 
   goToDetail(article: any) {
-    this.router.navigate(['/informaciones', article.id]);
+    this.router.navigate(['/informaciones-detail', article.id]);
   }
   
 }

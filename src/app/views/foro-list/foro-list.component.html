@@ -64,25 +64,26 @@
           </div>
         </div>
         
-        <!-- Publicaciones -->
-        <div *ngFor="let publicacion of filteredPublicaciones" class="card mb-3">
-          <div class="card-content p-3">
-            <div class="user-title-info">
-              <i class="fas fa-user user-icon"></i>
-              <div class="title-meta">
-                <h4>{{ publicacion.titulo }}</h4>
-                <p class="publication-meta text-muted">
-                  Publicado por {{ publicacion.usuario }} el {{ publicacion.fecha }}
-                </p>
-              </div>
-            </div>
-            <div class="description">
-              <p class="description-text">{{ publicacion.descripcion }}</p>
-            </div>
-            <a [routerLink]="['/foro', publicacion.id]" class="btn btn-primary">Ver discusión</a>
-          </div>          
-        </div>
+<!-- Publicaciones -->
+<div *ngFor="let publicacion of filteredPublicaciones" class="card mb-3">
+  <div class="card-content p-3">
+    <div class="user-title-info">
+      <i class="fas fa-user user-icon"></i>
+      <div class="title-meta">
+        <h4>{{ publicacion.titulo }}</h4>
+        <p class="publication-meta text-muted">
+          Publicado por {{ publicacion.usuario }} el {{ publicacion.fecha }}
+        </p>
         
+      </div>
+    </div>
+    <div class="description">
+      <p class="description-text">{{ publicacion.descripcion }}</p>
+    </div>
+    <a [routerLink]="['/foro', publicacion.id]" class="btn btn-primary">Ver discusión</a>
+  </div>
+</div>
+
         <!-- Paginación -->
         <div class="pagination-container">
           <button (click)="changePage(1)" [disabled]="currentPage <= 1" class="btn btn-secondary">Primera</button>

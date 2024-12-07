@@ -60,6 +60,11 @@ export const routes: Routes = [
     path: 'informaciones', 
     component: NewsComponent, 
     canActivate: [AuthGuard] 
+  },
+  {
+    path: 'informaciones-detail',
+    component: NewsDetailComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

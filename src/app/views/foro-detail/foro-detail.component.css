@@ -1,12 +1,10 @@
 .container-foro {
-  background-image: url('/assets/fondo1.png'); 
+  background-image: url('/assets/fondo1.png');
   background-size: cover;
   background-position: center;
   padding: 20px;
   height: 100vh;
 }
-
-
 
 .transparent-header {
   display: flex;
@@ -45,8 +43,9 @@
 
 .foro-container {
   padding: 20px;
-  margin-top: 20px;
+  margin-top: 120px; /* Aumentado para estar más abajo */
 }
+
 
 .fondo-container {
   background-color: #ffffffb2;
@@ -56,52 +55,20 @@
 }
 
 .btn-go-back {
-  background-color: #44861500; 
-  border: none; 
-  color: #448615; 
-  cursor: pointer; 
-  margin-bottom: 10px; 
+  background-color: #44861500;
+  border: none;
+  color: #448615;
+  cursor: pointer;
+  margin-bottom: 10px;
   size: 20px;
 }
 
 .user-info {
   margin-right: 15px;
-  font-size: 30px; 
+  font-size: 30px;
   color: #2e4a2e;
 }
 
-.search-bar {
-  display: flex;
-  align-items: center;
-  margin: 70px 0 20px;
-  border-radius: 5px;
-}
-
-.search-bar input {
-  width: 70%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px 0 0 5px;
-  outline: none;
-}
-
-.search-icon {
-  color: white;
-  font-size: 1.2rem;
-  padding: 14px;
-  background-color: #a0cf30;
-  border-radius: 0 5px 5px 0;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-}
-
-.filter-categories {
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #ffffff8a;
-  margin-left: 300px;
-}
 
 .card {
   background-color: white;
@@ -122,35 +89,72 @@
   margin-bottom: 10px;
 }
 
+
 .user-info {
   margin-right: 15px;
-  font-size: 30px;
+  font-size: 30px; 
   color: #2e4a2e;
+}
+
+.user-title-info {
+  display: flex;
+  align-items: center; /* Alinea los elementos verticalmente */
+}
+
+.user-icon {
+  margin-right: 8px; /* Espacio entre el ícono y el texto */
+}
+
+.title-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.publication-meta {
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+#more{
+  font-size: 14px;
+  font-weight: 100;
+  font-style: italic;
+  color: #333;
+}
+
+.separator{
+  height: 10px;
+}
+.title-info {
+  display: flex;
+  flex-direction: column; 
+  align-items: flex-start; 
+  margin-left: 10px; 
 }
 
 .title-info h4 {
   margin: 0;
-  font-size: 24px;
+  font-size: 18px;
   color: #333;
 }
 
 .publication-meta {
-  font-size: 16px;
+  font-size: 14px;
   color: #777;
-  margin-top: 8px;
+  margin-top: 5px;
 }
 
 .description p {
-  font-size: 18px;
+  font-size: 16px;
   color: #555;
   margin-top: 10px;
 }
-
 .comments-section {
   background-color: #ffffff;
   height: 100vh;
   padding: 25px;
-  border-radius: 10px;}
+  border-radius: 10px;
+}
 
 .comments-section h5 {
   font-size: 20px;
@@ -214,4 +218,102 @@
 
 .btn-comment:hover {
   background-color: #8bb329;
+}
+
+/* Modal */
+.modal-dialog {
+  max-width: 500px;
+  margin: 15vh auto;
+}
+
+.modal-content {
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.modal-header {
+  background-color: #448615;
+  color: white;
+  padding: 15px;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  line-height: 1;
+  opacity: 0.8;
+}
+
+.btn-close:hover {
+  opacity: 1;
+}
+
+/* Asegura que el botón "Volver al Foro" esté siempre visible y bien posicionado */
+.back-btn {
+  margin-bottom: 15px; /* Margen entre el botón y el contenido del post */
+  padding: 10px 20px;
+  background-color: #b30908;
+  color: white;
+  border: none;
+  font-size: 14px;
+}
+
+/* Asegura que el botón "Añadir comentario" también esté siempre visible */
+.btnAdd {
+  margin-top: 10px; /* Margen entre los comentarios y el botón */
+  padding: 10px 20px;
+  background-color: #448615;
+  color: white;
+  border: none;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+/* Backdrop CSS */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro con opacidad */
+  z-index: -1; /* Asegura que el backdrop esté por debajo del modal */
+}
+
+/* Estilo del Modal */
+.modal.show {
+  display: block;
+}
+
+.modal-dialog {
+  max-width: 500px;
+  margin: 15vh auto; /* Centra el modal verticalmente */
+}
+
+.modal-content {
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.modal-header {
+  background-color: #448615;
+  color: white;
+  padding: 15px;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.modal-footer {
+  padding: 15px;
+  text-align: right;
 }

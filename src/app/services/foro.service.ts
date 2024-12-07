@@ -55,4 +55,15 @@ export class ForoService {
       withCredentials: true, // Incluir las credenciales
     });
   }
+  getPostById(postId: string): Observable<any> {
+    const headers = this.getHeaders();
+    return this.http.get<any>(`${this.postApiUrl}/${postId}`, { headers });
+  }
+  
+  getTopicById(topicId: string): Observable<any> {
+    const headers = this.getHeaders();
+    return this.http.get<any>(`${this.topicApiUrl}/${topicId}`, { headers });
+  }
+  
+  
 }
