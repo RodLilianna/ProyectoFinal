@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { WeatherService } from './weather.service';
 import { FormsModule } from '@angular/forms';
 import { MenuComponent } from "../menu/menu.component";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-climate-sect',
@@ -18,8 +19,9 @@ export class ClimateSectComponent implements OnInit {
   hourlyData: any[] = [];
   dailyForecast: any[] = []; 
   errorMessage: string = '';
+  isVisible = false; 
 
-  constructor(private weatherService: WeatherService) {}
+  constructor(private weatherService: WeatherService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -89,6 +91,13 @@ export class ClimateSectComponent implements OnInit {
       'lluvia ligera': 'drizzle.png'
     };
     return iconMap[description] || 'default.png';
+  }
+  redirectToClima2() {
+    this.router.navigate(['/climaActual']);
+  }
+
+  redirectToLogIn() {
+    this.router.navigate(['/login']);
   }
 }
 

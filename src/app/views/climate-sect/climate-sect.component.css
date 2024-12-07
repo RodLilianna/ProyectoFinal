@@ -39,16 +39,21 @@
     height: 3px;
     background-color: #ffffff; 
     margin: 0; 
-    width: 100vw; 
+    width: 460px; 
 }
 
 .scrollable-container {
-    max-height: 300px; 
+    width: 1500px;
+    height: 650px !important;
     overflow-y: auto; 
-    overflow-x: auto; 
+    padding-right: 15px;
 }
 
-main {
+/* main {
     max-height: calc(100vh - 150px); 
     overflow-y: auto;
-} 
+}  */
+
+.detalles{
+    height: 50px;
+}

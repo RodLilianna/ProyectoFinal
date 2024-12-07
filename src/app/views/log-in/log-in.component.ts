@@ -137,4 +137,9 @@ onResetPassword(): void {
       modalInstance?.hide();
     }
   }
+
+  getUserId(): string {
+    const userId = localStorage.getItem('userId');
+    return userId || ''; 
+  }
 }

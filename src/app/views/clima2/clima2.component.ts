@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { WeatherService } from './weather.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-clima2',
@@ -14,13 +15,12 @@ import { FormsModule } from '@angular/forms';
 })
 export class Clima2Component implements OnInit {
   weatherData: any = {};
-  selectedCity: string = ''; // Inicializamos como vacío
+  selectedCity: string = ''; 
   errorMessage: string = '';
 
-  constructor(private weatherService: WeatherService) {}
+  constructor(private weatherService: WeatherService , private router: Router) {}
 
   ngOnInit(): void {
-    // Opcional: puedes inicializar con una ubicación por defecto si lo necesitas
   }
 
   fetchWeatherData(): void {
@@ -57,5 +57,9 @@ export class Clima2Component implements OnInit {
       'lluvia ligera': 'drizzle.png',
     };
     return iconMap[description] || 'default.png';
+  }
+
+  redirectToLogIn() {
+    this.router.navigate(['/login']);
   }
 }

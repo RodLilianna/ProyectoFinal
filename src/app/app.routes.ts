@@ -14,6 +14,9 @@ import { NewsDetailComponent } from './views/news-detail/news-detail.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { BrowserModule } from '@angular/platform-browser';
+import { ChunkPipe } from './views/calendar/chunk.pipe';
 
 export const routes: Routes = [
   { path: 'registro', component: RegistroComponent },
@@ -33,8 +36,10 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes),HttpClientModule,FormsModule],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes),HttpClientModule,FormsModule,FullCalendarModule,BrowserModule,ChunkPipe ],
+  exports: [RouterModule],
+  providers: [],
+  bootstrap: [],
 })
 export class AppRoutingModule { }
 

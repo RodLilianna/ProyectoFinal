@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MenuComponent } from '../menu/menu.component';
 import { ForoListService } from './foro-list.service';
 import { FormsModule } from '@angular/forms';
-
+import { AuthService } from '../../services/auth.service';  
 @Component({
   selector: 'app-foro-list',
   standalone: true,  
@@ -14,50 +14,52 @@ import { FormsModule } from '@angular/forms';
 })
 export class ForoListComponent implements OnInit {
   publicaciones: any[] = [];
-  newEntry = { title: '', token: '' };
+  newEntry = {
+    title: '',
+    content: '',
+    userId: '',  
+  };
 
-  constructor(private foroListService: ForoListService) {}
+  constructor(private authService: AuthService, private foroListService: ForoListService) {}
 
-  ngOnInit(): void {
-    this.cargarPublicaciones();
+  ngOnInit() {
+    this.loadPublicaciones();  
   }
-
-  cargarPublicaciones(): void {
+  
+  loadPublicaciones() {
     this.foroListService.getPublicaciones().subscribe(
-      (data) => {
+      (data: any[]) => {
+        console.log('Datos recibidos:', data);  
         this.publicaciones = data;
       },
       (error) => {
-        console.error('Error al cargar publicaciones:', error);
+        console.error('Error al cargar las publicaciones', error);
       }
     );
   }
 
-  onAddEntry(): void {
-    if (this.newEntry.title && this.newEntry.token) {
-      const userId = '7ef55abf-603c-4751-a282-eb5627ff1dc9'; 
-      const newEntryData = {
-        id: 0,  
-        title: this.newEntry.title,  
-        userId: userId,  
-      };
-  
-      console.log('Datos a enviar:', newEntryData);
-      console.log('Token:', this.newEntry.token);  
+  onAddEntry() {
+    // this.newEntry.userId = this.authService.getUserId();
 
-      this.foroListService.crearPublicacion(newEntryData, this.newEntry.token).subscribe(
+    if (this.newEntry.title && this.newEntry.userId) {
+      this.foroListService.addPublicacion(this.newEntry).subscribe(
         (response) => {
-          console.log('Entrada creada con éxito:', response);
-          this.publicaciones.push(response);
-          this.newEntry = { title: '', token: '' };  
+          this.publicaciones.push(response); 
+          this.resetNewEntry(); 
         },
         (error) => {
-          console.error('Error al crear la entrada:', error);
+          console.error('Error al agregar la publicación', error);
         }
       );
     }
   }
+
+  resetNewEntry() {
+    this.newEntry.title = '';  
+    this.newEntry.userId = '';  
+  }
 }
+
 
 // export class ForoListComponent implements OnInit {
 //   publicaciones: any[] = [];

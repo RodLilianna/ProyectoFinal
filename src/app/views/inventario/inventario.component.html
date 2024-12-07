@@ -1,20 +1,22 @@
 
 <div class="container-fluid gradient pb-5">
-        
-        <img src="/assets/bgleaves.png" alt="" class="position-absolute top-0 start-0 mt-5 pt-5" width="400px" height="600px">
-        <img src="/assets/bgleaves2.png" alt="" class="position-absolute bottom-0 end-0" width="600px" height="400px">
+    <img src="/assets/bgleaves.png" alt="" class="position-absolute top-0 start-0 mt-5 pt-5" width="400px" height="600px">
+    <img src="/assets/bgleaves2.png" alt="" class="position-absolute bottom-0 end-0" width="600px" height="400px">
         <div class="content">
             <header class="">
                 <nav class="my- mx-2 d-flex align-items-center justify-content-between">
                     <div class="d-flex align-items-center">
                         <app-menu class="btn open-menu-btn"></app-menu>
-                        <img src="/assets/logo5.png" alt="" width="200px" height="150px" class="d-inline ms-2">
+                        <img src="/assets/logo5.png" alt="" width="220px" height="170px" class="d-inline ms-2">
                         <label for="" class="form-label fs-1 text-light ms-2">Inventario</label>
                     </div>
                     <div class="d-flex align-items-center">
-                        <button class="btn"><i class="bi bi-person-circle fs-3 text-light"></i></button>
-                        <button class="btn"><i class="bi bi-caret-down fs-3 text-light"></i></button>
-                    </div>
+                        <button class="btn"><i class="bi bi-person-circle fs-2 text-light"></i></button>
+                        <button class="btn " data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-caret-down fs-2 text-light" ></i></button>
+                        <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" (click)="redirectToLogIn()">Cerrar sesion</a></li>
+                        </ul>
+                        </div>
                 </nav>
                 <hr class="custom-hr mb-4">
             </header>
@@ -26,83 +28,152 @@
                     </div>
         
                     <div class="d-inline float-end">
-                        <button class="btn"><i class="bi bi-search text-light fs-2"></i></button>
-                        <button class="btn"><i class="bi bi-plus-lg text-light fs-2"></i></button>
+                        <input 
+                            type="text" 
+                            [(ngModel)]="searchTerm" 
+                            placeholder="Buscar Producto" 
+                            class="form-control d-inline w-auto me-2"
+                            >
+                            <button class="btn" (click)="searchInventory()">
+                            <i class="bi bi-search text-light fs-2"></i>
+                            </button>
+                        <button type="button" class="btn btn-add-entry" data-bs-toggle="modal" data-bs-target="#inventoryModal">
+                            <i class="bi bi-plus-lg text-light fs-2"></i>
+                        </button>
                     </div>
                 </div>
 
-                <div class="bg-light bg-opacity-75 rounded-3 p-3 scrollable-container">
-                    <div class="rounded-3 bg-light mb-3">
-                        <div class="row">
-                            <div class="col-3">
-                                <section class="text-center">
-                                    <img src="/assets/tomate.png" alt="" width="200px" height="200px">
-                                    <label for="" class="fs-1 fw-bold d-block my-0" style="color: #4E702D;">30%</label>
-                                </section>
+                <div class="modal fade" id="inventoryModal" tabindex="-1" aria-labelledby="inventoryModalLabel" aria-hidden="true" data-bs-backdrop="false">
+                    <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="inventoryModalLabel">Agregar Cultivo</h5>
+                        <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        <form (ngSubmit)="createInventory()">
+                            <div>
+                            <label for="name">Nombre:</label>
+                            <input id="name" [(ngModel)]="newInventory.name" name="name" required />
                             </div>
-                            <div class="col-5">
-                                <section class="text-light ">
-                                    <label for="" class="d-block py-2 px-3 fs-5 inventario text-light m-3 ">Nombre del Cultivo:</label>
-                                    <label for="" class="d-block py-2 px-3 fs-5 inventario text-light m-3 ">Variedad: </label>
-                                    <label for="" class="d-block py-2 px-3 fs-5 inventario text-light m-3 ">Fecha de Siembra:</label>
-                                    <label for="" class="d-block py-2 px-3 fs-5 inventario text-light m-3 ">Fecha de Cosecha:</label>
-                                </section>
+                            <div>
+                            <label for="variety">Variedad:</label>
+                            <input id="variety" [(ngModel)]="newInventory.variety" name="variety" required />
                             </div>
-                            <div class="col-3 d-flex align-items-center justify-content-center">
-                                <section class="text-center">
-                                    <button class="verMas rounded-5 py-2 px-5 fs-4 fw-bold text-light ms-5">Ver más</button>
-                                </section>
+                            <div>
+                            <label for="plantingDate">Fecha de Plantación:</label>
+                            <input id="plantingDate" [(ngModel)]="newInventory.plantingDate" name="plantingDate" type="date" required />
                             </div>
+                            <div>
+                            <label for="harvestDate">Fecha de Cosecha:</label>
+                            <input id="harvestDate" [(ngModel)]="newInventory.harvestDate" name="harvestDate" type="date" required />
+                            </div>
+                            <div>
+                            <label for="growthPercentage">Porcentaje de Crecimiento:</label>
+                            <input id="growthPercentage" [(ngModel)]="newInventory.growthPercentage" name="growthPercentage" type="number" />
+                            </div>
+                            <div>
+                            <label for="description">Descripción:</label>
+                            <textarea id="description" [(ngModel)]="newInventory.description" name="description"></textarea>
+                            </div>
+                            <div class="text-end m-0">
+                                <button type="submit">Agregra Producto</button>
+                                <button type="button" class="btn btn-secondary text-light py-2 ms-2" data-bs-dismiss="modal">Cancelar</button>
+                            </div>
+                        </form>
                         </div>
                     </div>
-                    <div class="rounded-3 bg-light mb-3">
-                        <div class="row">
-                            <div class="col-3">
-                                <section class="text-center">
-                                    <img src="/assets/maiz.png" alt="" width="200px" height="200px">
-                                    <label for="" class="fs-1 fw-bold d-block my-0" style="color: #4E702D;">55%</label>
-                                </section>
-                            </div>
-                            <div class="col-5">
-                                <section class="text-light ">
-                                    <label for="" class="d-block py-2 px-3 fs-5 inventario text-light m-3 ">Nombre del Cultivo:</label>
-                                    <label for="" class="d-block py-2 px-3 fs-5 inventario text-light m-3 ">Variedad: </label>
-                                    <label for="" class="d-block py-2 px-3 fs-5 inventario text-light m-3 ">Fecha de Siembra:</label>
-                                    <label for="" class="d-block py-2 px-3 fs-5 inventario text-light m-3 ">Fecha de Cosecha:</label>
-                                </section>
-                            </div>
-                            <div class="col-3 d-flex align-items-center justify-content-center">
-                                <section class="text-center">
-                                    <button class="verMas rounded-5 py-2 px-5 fs-4 fw-bold text-light ms-5">Ver más</button>
-                                </section>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rounded-3 bg-light mb-3">
-                        <div class="row">
-                            <div class="col-3">
-                                <section class="text-center">
-                                    <img src="/assets/pepino.png" alt="" width="200px" height="200px">
-                                    <label for="" class="fs-1 fw-bold d-block my-0" style="color: #4E702D;">15%</label>
-                                </section>
-                            </div>
-                            <div class="col-5">
-                                <section class="text-light ">
-                                    <label for="" class="d-block py-2 px-3 fs-5 inventario text-light m-3 ">Nombre del Cultivo:</label>
-                                    <label for="" class="d-block py-2 px-3 fs-5 inventario text-light m-3 ">Variedad: </label>
-                                    <label for="" class="d-block py-2 px-3 fs-5 inventario text-light m-3 ">Fecha de Siembra:</label>
-                                    <label for="" class="d-block py-2 px-3 fs-5 inventario text-light m-3 ">Fecha de Cosecha:</label>
-                                </section>
-                            </div>
-                            <div class="col-3 d-flex align-items-center justify-content-center">
-                                <section class="text-center">
-                                    <button class="verMas rounded-5 py-2 px-5 fs-4 fw-bold text-light ms-5">Ver más</button>
-                                </section>
-                            </div>
-                        </div>
                     </div>
                 </div>
-                
-            </main>
-        </div>
-    </div>
+
+                <div class="bg-light bg-opacity-75 rounded-3 p-3 scrollable-container w-100">
+                    <div *ngFor="let inventory of inventoryList" class="rounded-3 bg-light mb-3">
+                    <div class="row">
+                        <div class="col-3 text-center">
+                            <img src="/assets/tomate.png" alt="Imagen del Cultivo" width="250px" height="250px">
+                            <label class="fs-1 fw-bold my-0 d-block" style="color: #4E702D;">{{ inventory.growthPercentage }}%</label>
+                        </div>
+                        <div class="col-3">
+                            <label class="d-block py-2 px-3 fs-4 text-light m-3 w-100" style="background-color: #5f843a;">Nombre del Cultivo: {{ inventory.name }}</label>
+                            <label class="d-block py-2 px-3 fs-4 text-light m-3 w-100" style="background-color: #5f843a;">Variedad: {{ inventory.variety }}</label>
+                            <label class="d-block py-2 px-3 fs-4 text-light m-3 w-100" style="background-color: #5f843a;">Fecha de Siembra: {{ inventory.plantingDate | date:'dd/MM/yyyy'}}</label>
+                            <label class="d-block py-2 px-3 fs-4 text-light m-3 w-100" style="background-color: #5f843a;">Fecha de Cosecha: {{ inventory.harvestDate | date:'dd/MM/yyyy'}}</label>
+                        </div>
+                        <div class="col-3 pb-5">
+                            <label class="d-block py-2 px-3 fs-4 text-light m-3 w-100 h-100 " style="background-color: #5f843a;">Descripción: {{ inventory.description }}</label>
+                        </div>
+                        <div class="col-2 d-flex align-items-center justify-content-center">
+                            <button class="btn" *ngIf="inventory.id !== undefined" (click)="deleteInventory(inventory.id)">
+                                <i class="bi bi-trash fs-1"></i>
+                            </button>
+                        <button class="btn" (click)="openEditModal(inventory)">
+                            <i class="bi bi-pen fs-1"></i>
+                        </button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+
+                    <!-- <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true" data-bs-backdrop="false">
+                        <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="deleteModalLabel">Confirmar Eliminación</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                            <p>¿Estás seguro de que deseas eliminar este producto?</p>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-danger">Eliminar</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div> -->
+
+                    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true" data-bs-backdrop="false">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="editModalLabel">Editar Inventario</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                            <form (ngSubmit)="updateInventory()">
+                                <div>
+                                <label for="name">Nombre:</label>
+                                <input id="name" [(ngModel)]="selectedInventory.name" name="name" required />
+                                </div>
+                                <div>
+                                <label for="variety">Variedad:</label>
+                                <input id="variety" [(ngModel)]="selectedInventory.variety" name="variety" required />
+                                </div>
+                                <div>
+                                <label for="plantingDate">Fecha de Plantación:</label>
+                                <input id="plantingDate" [(ngModel)]="selectedInventory.plantingDate" name="plantingDate" type="date" required />
+                                </div>
+                                <div>
+                                <label for="harvestDate">Fecha de Cosecha:</label>
+                                <input id="harvestDate" [(ngModel)]="selectedInventory.harvestDate" name="harvestDate" type="date" required />
+                                </div>
+                                <div>
+                                <label for="growthPercentage">Porcentaje de Crecimiento:</label>
+                                <input id="growthPercentage" [(ngModel)]="selectedInventory.growthPercentage" name="growthPercentage" type="number" />
+                                </div>
+                                <div>
+                                <label for="description">Descripción:</label>
+                                <textarea id="description" [(ngModel)]="selectedInventory.description" name="description"></textarea>
+                                </div>
+                                <div class="text-end">
+                                    <button type="submit" class="btn btn-primary text-light">Actualizar Inventario</button>
+                                    <button type="button" class="btn btn-secondary text-light py-2 ms-2" data-bs-dismiss="modal">Cancelar</button>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+            

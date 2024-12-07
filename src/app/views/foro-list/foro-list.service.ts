@@ -15,13 +15,11 @@ export class ForoListService {
 
   constructor(private http: HttpClient) {}
 
-  crearPublicacion(newEntry: any, token: string): Observable<any> {
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-
-    return this.http.post(this.apiUrl, newEntry, { headers });
-  }
-
   getPublicaciones(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
+  }
+
+  addPublicacion(publicacion: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl, publicacion);
   }
 }

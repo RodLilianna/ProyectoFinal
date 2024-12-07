@@ -170,8 +170,8 @@
 }
 
 .scrollable-container {
-  width: 1450px;
-  max-height: 500px; 
+  width: 1620px;
+  max-height: 565px; 
   overflow-y: auto; 
   padding-right: 15px;
 }

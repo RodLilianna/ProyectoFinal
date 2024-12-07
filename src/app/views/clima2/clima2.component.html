@@ -1,5 +1,5 @@
-<div class="container-fluid gradient pb-5">
-    <div class="content">
+<div class="container-fluid gradient pb-5 ">
+    <div class="content pb-5">
         <header class="">
             <nav class="my- mx-2 d-flex align-items-center justify-content-between">
                 <div class="d-flex align-items-center">
@@ -9,13 +9,16 @@
                 </div>
                 <div class="d-flex align-items-center">
                     <button class="btn"><i class="bi bi-person-circle fs-3 text-light"></i></button>
-                    <button class="btn"><i class="bi bi-caret-down fs-3 text-light"></i></button>
+                    <button class="btn " data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-caret-down fs-2 text-light" ></i></button>
+                    <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" (click)="redirectToLogIn()">Cerrar sesion</a></li>
+                    </ul>
                 </div>
             </nav>
             <hr class="custom-hr mb-4">
         </header>
 
-        <main >
+        <main class="pb-5">
             <div class="ms-5">
                 <input type="text" class="form-control w-25 d-inline text-dark" placeholder="Enter a city" [(ngModel)]="selectedCity" />
                 <button class="btn btn-primary text-light ms-2" (click)="fetchWeatherData()">Get Weather</button>
@@ -24,7 +27,7 @@
             <div class="div ">
                 <div class="row">
                     <div class="col-3">
-                        <div class="bg-light bg-opacity-50 rounded-3 p-3 scrollable-container mt-3 w-100">
+                        <div class="bg-light bg-opacity-50 rounded-3 p-3 scrollable-container mt-3 w-100 h-100">
                           <div class="row">
                             <div class="col-12 d-flex justify-content-center align-items-center">
                               <div class="mt-3 pb-5">
@@ -43,13 +46,7 @@
                                 <label class="fs-5 d-block mt-2">
                                   Humedad: {{ weatherData.humidity || '--' }}%
                                 </label>
-                                <img
-                                  src="Iconos/Screenshot 2024-07-10 152919.png"
-                                  class="rounded-3 mt-2"
-                                  alt="weather chart"
-                                  width="200px"
-                                  height="85px"
-                                />
+                                
                               </div>
                             </div>
                           </div>
@@ -85,18 +82,29 @@
                                 <div class="col-6">
                                     <div class="row mt-5">
                                         <div class="col-12">
-                                            <div class="bg-light  rounded-3 scrollable-container my-2 w-100 p-4">
+                                            <div class="bg-light rounded-3 scrollable-container my-2 w-100 p-4">
                                                 <div class="row d-flex justify-content-center">
                                                     <div class="col-12">
                                                         <label for="" class="fs-5 mb-0 text-dark fw-bold">HUMEDAD</label>
-                                                        <hr class="custom-hr mb-2 text-dark w-100 " style="background-color: #727568;">
-                                                        <label for="" class="text-dark">Humedad Baja (12%)</label>
+                                                        <hr class="custom-hr mb-2 text-dark w-100" style="background-color: #727568;">
+                                                        
+                                                        <label for="" class="text-dark fw-bold">Humedad Baja (Menos del 30%):</label>
                                                         <p class="text-dark mb-0">• Proporcionar agua adicional.</p>
                                                         <p class="text-dark mb-0">• Usar cubiertas protectoras para reducir la evaporación.</p>
-                                                        <p class="text-dark mb-0">• Evita fertilización pesada.</p>
-                                                        <p class="text-dark mb-0">• Monitorea enfermedades de cultivos.</p>
+                                                        <p class="text-dark mb-0">• Evitar fertilización pesada.</p>
+                                                        <p class="text-dark mb-0">• Monitorear enfermedades de cultivos.</p>
                                                         <p class="text-dark mb-0">• Hidratación al personal.</p>
                                                         <p class="text-dark mb-0">• Protege las plantas jóvenes.</p>
+                                                        <P></P>
+                                                        <label for="" class="text-dark fw-bold">Humedad Media (Entre 30% y 60%):</label>
+                                                        <p class="text-dark mb-0">• Riego regular, pero sin excesos.</p>
+                                                        <p class="text-dark mb-0">• Monitorear plagas y enfermedades.</p>
+                                                        <p class="text-dark mb-0">• Cuidado con la condensación que puede afectar las plantas.</p>
+                                                        <P></P>
+                                                        <label for="" class="text-dark fw-bold">Humedad Alta (Más del 60%):</label>
+                                                        <p class="text-dark mb-0">• Evitar el exceso de riego.</p>
+                                                        <p class="text-dark mb-0">• Asegurar una buena circulación de aire para evitar hongos.</p>
+                                                        <p class="text-dark mb-0">• Revisar el drenaje del suelo.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -111,13 +119,19 @@
                                                     <div class="col-12">
                                                         <label for="" class="fs-5 mb-0 text-dark fw-bold">CALIDAD DEL AIRE</label>
                                                         <hr class="custom-hr mb-2 text-dark w-100 " style="background-color: #727568;">
-                                                        <label for="" class="text-dark">INSALUBRE</label>
-                                                        <p class="text-dark mb-0">• Usar mascarillas protectoras.</p>
-                                                        <p class="text-dark mb-0">• Reducir las horas al aire libre.</p>
-                                                        <p class="text-dark mb-0">• Suspender actividades cuando el índice sea muy alto</p>
-                                                        <p class="text-dark mb-0">• Monitorear los cultivos sensibles.</p>
-                                                        <p class="text-dark mb-0">• Cerrar ventanas y puertas de invernaderos o almacenes.</p>
-                                                        <p class="text-dark mb-0">• Asegura el agua potable.</p>
+                                                        <label for="" class="text-dark fw-bold">Calidad del Aire Baja (Insalubre):</label>
+                                                        <p class="text-dark mb-0">• Uso de mascarillas: El personal debe usar mascarillas protectoras para evitar inhalar partículas dañinas.</p>
+                                                        <p class="text-dark mb-0">• Limitar actividades al aire libre: Reduce el tiempo de exposición al aire libre, especialmente en actividades que impliquen esfuerzo físico.</p>
+                                                        <p class="text-dark mb-0">• Suspender actividades si es necesario: Si el índice de calidad del aire es muy alto, suspende actividades hasta que mejore la calidad del aire.</p>
+                                                        <p class="text-dark mb-0">• Cerrar ventanas: En áreas cerradas como invernaderos, asegúrate de mantener las ventanas cerradas para evitar que el aire contaminado entre.</p>
+                                                        <P></P>
+                                                        <label for="" class="text-dark fw-bold">Calidad del Aire Media (Moderada):</label>
+                                                        <p class="text-dark mb-0">• Monitorear la calidad del aire: Mantén un control constante de la calidad del aire para tomar decisiones rápidas si empeora.</p>
+                                                        <p class="text-dark mb-0">• Evitar actividades físicas intensas: Limita actividades al aire libre que requieran esfuerzo físico si la calidad del aire no es ideal.</p>
+                                                        <p class="text-dark mb-0">• Protección preventiva: Aunque no sea insalubre, es recomendable usar mascarillas o proteger el sistema respiratorio si las actividades implican exposición prolongada al aire libre.</p>
+                                                        <label for="" class="text-dark fw-bold">Calidad del Aire Buena (Saludable):</label>
+                                                        <p class="text-dark mb-0">• Vigilancia regular: Aunque la calidad del aire sea buena, sigue monitoreando los niveles, especialmente en áreas cercanas a fuentes de contaminación.</p>
+                                                        <p class="text-dark mb-0">• Realizar actividades al aire libre normalmente: Las actividades pueden realizarse sin restricción, pero siempre asegurando que el personal esté en condiciones saludables.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -125,20 +139,31 @@
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    <div class="row ">
+                                    <div class="row">
                                         <div class="col-12">
-                                            <div class="bg-light  rounded-3 scrollable-container mt-2 w-100 p-4">
+                                            <div class="bg-light rounded-3 scrollable-container mt-2 w-100 p-4">
                                                 <div class="row d-flex justify-content-center">
                                                     <div class="col-12">
                                                         <label for="" class="fs-5 mb-0 text-dark fw-bold">TEMPERATURA</label>
-                                                        <hr class="custom-hr mb-2 text-dark w-100 " style="background-color: #727568;">
-                                                        <label for="" class="text-dark">30 °C</label>
-                                                        <p class="text-dark mb-0">• Riega temprano para minimizar pérdidas.</p>
-                                                        <p class="text-dark mb-0">• Instalar mallas de sombreado.</p>
-                                                        <p class="text-dark mb-0">• Aplicar mulch.</p>
-                                                        <p class="text-dark mb-0">• Evitar golpes de calor.</p>
+                                                        <hr class="custom-hr mb-2 text-dark w-100" style="background-color: #727568;">
+                                                        
+                                                        <label for="" class="text-dark fw-bold">Temperatura Baja (Menos de 10°C):</label>
+                                                        <p class="text-dark mb-0">• Protege las plantas sensibles a las heladas con cobertores o estructuras.</p>
+                                                        <p class="text-dark mb-0">• Controla el riego para evitar el enfriamiento excesivo de las raíces.</p>
+                                                        <p class="text-dark mb-0">• Asegurar calefacción en invernaderos si es necesario.</p>
                                                         <p class="text-dark mb-0">• Hidratación al personal.</p>
-                                                        <p class="text-dark mb-0">• Protege las plantas jóvenes.</p>
+                                                        <P></P>
+                                                        <label for="" class="text-dark fw-bold">Temperatura Media (Entre 10°C y 25°C):</label>
+                                                        <p class="text-dark mb-0">• Riego moderado durante las horas frescas del día.</p>
+                                                        <p class="text-dark mb-0">• Buena ventilación en áreas de trabajo.</p>
+                                                        <p class="text-dark mb-0">• Proteger las plantas jóvenes de cambios bruscos de temperatura.</p>
+                                                        <P></P>
+                                                        <label for="" class="text-dark fw-bold">Temperatura Alta (Más de 30°C):</label>
+                                                        <p class="text-dark mb-0">• Riego temprano para minimizar pérdidas por evaporación.</p>
+                                                        <p class="text-dark mb-0">• Instalar mallas de sombreado para proteger las plantas.</p>
+                                                        <p class="text-dark mb-0">• Aplicar mulch para conservar la humedad del suelo.</p>
+                                                        <p class="text-dark mb-0">• Evitar golpes de calor para el personal.</p>
+                                                        <p class="text-dark mb-0">• Protege las plantas jóvenes del calor extremo.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -151,15 +176,21 @@
                                             <div class="bg-light  rounded-3 scrollable-container mt-2 w-100 p-4">
                                                 <div class="row d-flex justify-content-center">
                                                     <div class="col-12">
-                                                        <label for="" class="fs-5 mb-0 text-dark fw-bold">VELOCIDAD DEL VIENTE</label>
+                                                        <label for="" class="fs-5 mb-0 text-dark fw-bold">VIENTO</label>
                                                         <hr class="custom-hr mb-2 text-dark w-100 " style="background-color: #727568;">
-                                                        <label for="" class="text-dark">7.70 KM/H</label>
-                                                        <p class="text-dark mb-0">• Vigila cultivos altos o con ramas delgadas.</p>
-                                                        <p class="text-dark mb-0">• Evitar disturbios del suelo seco.</p>
-                                                        <p class="text-dark mb-0">• Evita fertilización pesada.</p>
-                                                        <p class="text-dark mb-0">• Monitorea enfermedades de cultivos.</p>
-                                                        <p class="text-dark mb-0">• Hidratación al personal.</p>
-                                                        <p class="text-dark mb-0">• Protege las plantas jóvenes.</p>
+                                                        <label for="" class="text-dark fw-bold">Viento Bajo (Menos de 15 km/h)</label>
+                                                        <p class="text-dark mb-0">• Sin problemas de seguridad: Las condiciones son ideales para actividades al aire libre sin preocupaciones por la seguridad.</p>
+                                                        <p class="text-dark mb-0">• Monitorear estructuras temporales: Aunque el viento es bajo, revisa las estructuras temporales, como mallas de sombra, para asegurarte de que estén seguras.</p>
+                                                        <P></P>
+                                                        <label for="" class="text-dark fw-bold">Viento Moderado (Entre 15 km/h y 40 km/h)</label>
+                                                        <p class="text-dark mb-0">• Reforzar estructuras: Verifica que las estructuras más vulnerables estén bien aseguradas para evitar daños por ráfagas.</p>
+                                                        <p class="text-dark mb-0">• Proteger cultivos sensibles: Asegúrate de que los cultivos con tallos frágiles o ramas delgadas estén protegidos del viento.</p>
+                                                        <p class="text-dark mb-0">• Evitar disturbios del suelo: Si el suelo está seco, el viento puede causar erosión, así que aplica medidas para evitarlo.</p>
+                                                        <P></P>
+                                                        <label for="" class="text-dark fw-bold">Viento Fuerte (Más de 40 km/h)</label>
+                                                        <p class="text-dark mb-0">• Protección inmediata: Asegura que todas las estructuras estén firmemente sujetas para evitar daños por el viento.</p>
+                                                        <p class="text-dark mb-0">• Monitorear cultivos y personal: El viento fuerte puede dañar los cultivos o poner en riesgo al personal, por lo que es importante actuar con rapidez para protegerlos.</p>
+                                                        <p class="text-dark mb-0">• Suspender actividades al aire libre: Si las condiciones son extremadamente ventosas, es recomendable suspender actividades al aire libre hasta que disminuya la velocidad del viento.</p>
                                                     </div>
                                                 </div>
                                             </div>
