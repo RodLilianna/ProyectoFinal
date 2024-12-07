@@ -1,14 +1,14 @@
 <aside class="sidebar" [ngClass]="{'closed': !isMenuOpen}">
   <div class="sidebar-header">
     <button (click)="toggleMenu()" class="menu-toggle">
-      <i class="fa" [ngClass]="isMenuOpen ? 'fa-times' : 'fa-bars'"></i> <!-- Icono cambia según si está abierto o cerrado -->
+      <i class="fa" [ngClass]="isMenuOpen ? 'fa-times' : 'fa-bars'"></i>
     </button>
     <img src="assets/logo7.png" alt="Agrosmart Logo" class="logo" *ngIf="isMenuOpen">
     <div class="user-info" *ngIf="isMenuOpen">
       <img src="assets/circle-user.png" alt="User Icon" class="user-icon">
       <div class="user-text">
         <p class="user-greeting">Bienvenido/a,</p>
-        <p class="username">{{ username }}</p> <!-- Muestra el nombre de usuario -->
+        <p class="username">{{ username }}</p>
       </div>
     </div>
   </div>
@@ -20,22 +20,16 @@
       <li><a href="/informaciones"><i class="fa fa-info-circle"></i> Información</a></li>
       <li><a href="/calendario"><i class="fa fa-calendar"></i> Calendario</a></li>
       <li><a href="/climaActual"><i class="fa fa-cloud"></i> Predicción de clima</a></li>
-      <li><a href="/exportar"><i class="fa fa-download"></i> Exportar datos</a></li>
+      <!--<li (click)="exportToExcel()"><a href=" /dashboard"><i class="fa fa-download"></i> Exportar a Excel</a></li>-->
       <li><a href="/inventario"><i class="fa fa-box"></i> Inventario</a></li>
     </ul>
   </nav>
 
   <div class="logout-section" *ngIf="isMenuOpen">
-    <a href="#" (click)="logout()" class="logout-btn"><i class="fa fa-sign-out-alt"></i> Cerrar sesión</a> <!-- Llama a la función logout -->
+    <a href="#" (click)="logout()" class="logout-btn"><i class="fa fa-sign-out-alt"></i> Cerrar sesión</a>
   </div>
 </aside>
 
-<!-- Icono de apertura del menú (cuando está cerrado) -->
 <button class="open-menu-btn" *ngIf="!isMenuOpen" (click)="toggleMenu()">
   <i class="fa fa-bars"></i>
 </button>
-
-<!-- Contenido Principal -->
-<div class="main-content">
-  <!-- Aquí va el contenido principal que cambiará según la vista -->
-</div>

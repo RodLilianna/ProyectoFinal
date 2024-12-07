@@ -1,8 +1,13 @@
 <body>
   <div class="overlay"></div>
+
+  <!-- Contenedor de inicio de sesión -->
   <div class="login-container">
     <div class="login-box">
+      <!-- Logo -->
       <img src="assets/logo7.png" alt="Agrosmart logo" class="logo" />
+
+      <!-- Formulario de inicio de sesión -->
       <form (ngSubmit)="onSubmit()">
         <div class="input-group">
           <h3>Usuario</h3>
@@ -13,6 +18,7 @@
             required
             placeholder="Ingresa tu usuario" />
         </div>
+
         <div class="input-group">
           <h3>Contraseña</h3>
           <input
@@ -22,97 +28,99 @@
             required
             placeholder="Ingresa tu contraseña" />
         </div>
+
         <div class="actions">
           <button type="submit">INICIAR SESIÓN</button>
           <div class="separator"></div>
-          <!-- Botón que abre el modal -->
-          <a href="#" class="forgot-password" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal" data-bs-backdrop="false">Recuperar contraseña</a>
 
-          <!-- Modal Recuperar Contraseña -->
-          <div class="modal" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="forgotPasswordLabel">Recuperar Contraseña</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                </div>
-                <div class="modal-body">
-                  <form (ngSubmit)="onForgotPassword()">
-                    <div class="mb-3">
-                      <label for="forgotEmail" class="form-label">Correo electrónico</label>
-                      <input type="email" [(ngModel)]="forgotPasswordEmail" name="forgotPasswordEmail" class="form-control" id="forgotEmail" required placeholder="Ingresa tu correo">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Enviar</button>
-                  </form>
-                  <p *ngIf="forgotMessage" class="text-danger mt-2">{{ forgotMessage }}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-
-          <!-- Modal Restablecer Contraseña -->
-<!-- Modal Restablecer Contraseña -->
-<div class="modal" id="resetPasswordModal" tabindex="-1" aria-labelledby="resetPasswordModalLabel" data-bs-backdrop="false" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="resetPasswordModalLabel">Restablecer Contraseña</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-      </div>
-      <div class="modal-body">
-        <form (ngSubmit)="onResetPassword()">
-          <div class="mb-3">
-            <label for="resetToken" class="form-label">Token</label>
-            <input
-              type="text"
-              id="resetToken"
-              class="form-control"
-              [(ngModel)]="resetToken"
-              name="resetToken"
-              required
-              placeholder="Ingresa el token recibido"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="resetPassword" class="form-label">Nueva Contraseña</label>
-            <input
-              type="password"
-              id="resetPassword"
-              class="form-control"
-              [(ngModel)]="resetPassword"
-              name="resetPassword"
-              required
-              placeholder="Ingresa la nueva contraseña"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="resetConfirmPassword" class="form-label">Confirmar Contraseña</label>
-            <input
-              type="password"
-              id="resetConfirmPassword"
-              class="form-control"
-              [(ngModel)]="resetConfirmPassword"
-              name="resetConfirmPassword"
-              required
-              placeholder="Confirma la nueva contraseña"
-            />
-          </div>
-          <div class="form-text text-danger" *ngIf="resetMessage">{{ resetMessage }}</div>
-          <button type="submit" class="btn btn-primary">Restablecer Contraseña</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
-          
-
+          <!-- Enlace para abrir el modal de recuperación de contraseña -->
+          <a href="#" class="forgot-password" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">
+            Recuperar contraseña
+          </a>
         </div>
+
+        <!-- Enlace para registrarse si no tiene cuenta -->
         <div class="register-link">
           <span>¡Aún no tengo cuenta, </span><a href="/registro">regístrame!</a>
         </div>
       </form>
     </div>
   </div>
+
+  <!-- Modal Recuperar Contraseña -->
+  <div class="modal" id="forgotPasswordModal" tabindex="1000" aria-labelledby="forgotPasswordLabel" aria-hidden="true" data-bs-backdrop="false">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="forgotPasswordLabel">Recuperar Contraseña</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="onForgotPassword()">
+            <div class="mb-3">
+              <label for="forgotEmail" class="form-label">Correo electrónico</label>
+              <input type="email" [(ngModel)]="forgotPasswordEmail" name="forgotPasswordEmail" class="form-control" id="forgotEmail" required placeholder="Ingresa tu correo">
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+          </form>
+          <p *ngIf="forgotMessage" class="text-danger mt-2">{{ forgotMessage }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Restablecer Contraseña -->
+  <div class="modal" id="resetPasswordModal" tabindex="-1" aria-labelledby="resetPasswordModalLabel" data-bs-backdrop="false" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="resetPasswordModalLabel">Restablecer Contraseña</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="onResetPassword()">
+            <div class="mb-3">
+              <label for="resetToken" class="form-label">Token</label>
+              <input
+                type="text"
+                id="resetToken"
+                class="form-control"
+                [(ngModel)]="resetToken"
+                name="resetToken"
+                required
+                placeholder="Ingresa el token recibido"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="resetPassword" class="form-label">Nueva Contraseña</label>
+              <input
+                type="password"
+                id="resetPassword"
+                class="form-control"
+                [(ngModel)]="resetPassword"
+                name="resetPassword"
+                required
+                placeholder="Ingresa la nueva contraseña"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="resetConfirmPassword" class="form-label">Confirmar Contraseña</label>
+              <input
+                type="password"
+                id="resetConfirmPassword"
+                class="form-control"
+                [(ngModel)]="resetConfirmPassword"
+                name="resetConfirmPassword"
+                required
+                placeholder="Confirma la nueva contraseña"
+              />
+            </div>
+            <div class="form-text text-danger" *ngIf="resetMessage">{{ resetMessage }}</div>
+            <button type="submit" class="btn btn-primary">Restablecer Contraseña</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>

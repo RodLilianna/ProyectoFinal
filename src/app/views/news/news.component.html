@@ -1,121 +1,47 @@
 <div class="container-news">
-    <header class="transparent-header">
-      <div class="header-left">
-        <app-menu></app-menu>
-        <div class="image-container">
-          <img src="/assets/logo5.png" alt="Logo" class="logo">
-          <div class="overlay-text">Informaciones Agricolas</div>
-        </div>
+  <!-- Header -->
+  <header class="transparent-header">
+    <div class="header-left">
+      <app-menu></app-menu>
+      <div class="image-container">
+        <img src="/assets/logo5.png" alt="Logo" class="logo">
+        <div class="overlay-text">Informaciones Agrícolas</div>
       </div>
-      <div class="header-right">
-        <i class="fi fi-sr-circle-user user-icon"></i> 
-      </div>
-    </header>
+    </div>
+    <div class="header-right">
+      <i class="fi fi-sr-circle-user user-icon"></i>
+    </div>
+  </header>
 
-    <div class="news-container">
-        <div class="search-bar">
-          <input type="text" class="form-control" placeholder="Buscar...">
-            <i class="fas fa-search search-icon"></i>
-    
-          <select class="filter-categories">
-            <option value="">Categorías</option>
-            <option value="categoria1">Categoría 1</option>
-            <option value="categoria2">Categoría 2</option>
-          </select>
-        </div>
+  <!-- Barra de búsqueda encima del Header -->
+  <div class="search-bar-container">
+    <div class="search-bar">
+      <input type="text" class="form-control" placeholder="Buscar..." [(ngModel)]="searchQuery" (input)="onSearchChange()">
+      <i class="fas fa-search search-icon"></i>
+    </div>
+  </div>
 
-        <div class="fondo-container">
-  <div class="container mt-4">
-    <div class="row">
-      <div class="col-md-4" *ngFor="let article of articles">
-        <div class="card mb-4">
-          <img [src]="article.imageUrl" class="card-img-top" alt="{{ article.title }}">
-          <div class="card-body">
-            <p class="text-muted">PRÁCTICAS AGRÍCOLAS</p>
-            <h5 class="card-title">{{ article.title }}</h5>
-            <p class="card-text">Publicado el {{ article.date }}</p>
-            <button class="btn btn-link text-success" (click)="goToDetail(article)">Leer más &rarr;</button>
+  <!-- Contenedor de noticias con tarjetas -->
+  <div class="news-container">
+    <div class="fondo-container">
+      <div class="container-fluid mt-4">
+        <div class="row">
+          <div class="col-md-4" *ngFor="let article of articles | paginate: { itemsPerPage: pageSize, currentPage: currentPage }">
+            <div class="card mb-4">
+              <img [src]="article.imageUrl" class="card-img-top" alt="{{ article.title }}">
+              <div class="card-body">
+                <h5 class="card-title">{{ article.title }}</h5>
+                <button class="btn btn-link text-success" (click)="goToDetail(article)">Leer más &rarr;</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-md-4" *ngFor="let article of articles">
-        <div class="card mb-4">
-          <img [src]="article.imageUrl" class="card-img-top" alt="{{ article.title }}">
-          <div class="card-body">
-            <p class="text-muted">PRÁCTICAS AGRÍCOLAS</p>
-            <h5 class="card-title">{{ article.title }}</h5>
-            <p class="card-text">Publicado el {{ article.date }}</p>
-            <button class="btn btn-link text-success" (click)="goToDetail(article)">Leer más &rarr;</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4" *ngFor="let article of articles">
-        <div class="card mb-4">
-          <img [src]="article.imageUrl" class="card-img-top" alt="{{ article.title }}">
-          <div class="card-body">
-            <p class="text-muted">PRÁCTICAS AGRÍCOLAS</p>
-            <h5 class="card-title">{{ article.title }}</h5>
-            <p class="card-text">Publicado el {{ article.date }}</p>
-            <button class="btn btn-link text-success" (click)="goToDetail(article)">Leer más &rarr;</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4" *ngFor="let article of articles">
-        <div class="card mb-4">
-          <img [src]="article.imageUrl" class="card-img-top" alt="{{ article.title }}">
-          <div class="card-body">
-            <p class="text-muted">PRÁCTICAS AGRÍCOLAS</p>
-            <h5 class="card-title">{{ article.title }}</h5>
-            <p class="card-text">Publicado el {{ article.date }}</p>
-            <button class="btn btn-link text-success" (click)="goToDetail(article)">Leer más &rarr;</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4" *ngFor="let article of articles">
-        <div class="card mb-4">
-          <img [src]="article.imageUrl" class="card-img-top" alt="{{ article.title }}">
-          <div class="card-body">
-            <p class="text-muted">PRÁCTICAS AGRÍCOLAS</p>
-            <h5 class="card-title">{{ article.title }}</h5>
-            <p class="card-text">Publicado el {{ article.date }}</p>
-            <button class="btn btn-link text-success" (click)="goToDetail(article)">Leer más &rarr;</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4" *ngFor="let article of articles">
-        <div class="card mb-4">
-          <img [src]="article.imageUrl" class="card-img-top" alt="{{ article.title }}">
-          <div class="card-body">
-            <p class="text-muted">PRÁCTICAS AGRÍCOLAS</p>
-            <h5 class="card-title">{{ article.title }}</h5>
-            <p class="card-text">Publicado el {{ article.date }}</p>
-            <button class="btn btn-link text-success" (click)="goToDetail(article)">Leer más &rarr;</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4" *ngFor="let article of articles">
-        <div class="card mb-4">
-          <img [src]="article.imageUrl" class="card-img-top" alt="{{ article.title }}">
-          <div class="card-body">
-            <p class="text-muted">PRÁCTICAS AGRÍCOLAS</p>
-            <h5 class="card-title">{{ article.title }}</h5>
-            <p class="card-text">Publicado el {{ article.date }}</p>
-            <button class="btn btn-link text-success" (click)="goToDetail(article)">Leer más &rarr;</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4" *ngFor="let article of articles">
-        <div class="card mb-4">
-          <img [src]="article.imageUrl" class="card-img-top" alt="{{ article.title }}">
-          <div class="card-body">
-            <p class="text-muted">PRÁCTICAS AGRÍCOLAS</p>
-            <h5 class="card-title">{{ article.title }}</h5>
-            <p class="card-text">Publicado el {{ article.date }}</p>
-            <button class="btn btn-link text-success" (click)="goToDetail(article)">Leer más &rarr;</button>
-          </div>
-        </div>
-      </div>
+
+      <!-- Paginación -->
+      <div class="pagination-container">
+        <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
       </div>
     </div>
   </div>
-  
+</div>

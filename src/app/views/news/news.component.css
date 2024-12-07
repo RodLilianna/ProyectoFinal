@@ -1,106 +1,152 @@
-.container-news {
-    background-image: url('/assets/fondo1.png'); 
-    background-size: cover;
-    background-position: center;
-    padding: 20px;
-    height: 100vh;
-  }
-  
-  .transparent-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgba(47, 70, 47, 0);
-    color: white;
-    padding: 10px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-  }
-  
-  .image-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .logo {
-    width: 130px;
-    height: auto;
-    border-radius: 10px;
-    padding-left: 45px;
-    padding-top: 35px;
-  }
-  
-  .overlay-text {
-    max-width: 100%;
-    font-size: 35px;
-    font-weight: 600;
-    margin-left: -20px;
-    padding-top: 35px;
-  }
-
-  .fondo-container {
-    background-color: #ffffff00;
-    height: 100vh;
-    padding: 15px;
-    border-radius: 10px;
-    overflow-y: auto; 
-    min-height: 100vh;
+.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+  margin: 0;
+  width: 100%;
 }
 
-  
-  .user-icon {
-    font-size: 1.5rem;
-    color: white; 
-  }
-  
-  .search-bar {
-    display: flex;
-    align-items: center; 
-    margin: 70px 0 20px; 
-    padding: 0; 
-    border-radius: 5px; 
-    overflow: hidden; 
-  }
-  
-  .search-bar input {
-    width: 70%;
-    padding: 10px; 
-    border: 1px solid #ccc;
-    border-radius: 5px 0 0 5px; 
-    outline: none; 
-  }
-  
-  .search-icon {
-    color: white; 
-    font-size: 1.2rem;
-    padding: 14px; 
-    background-color: #a0cf30;
-    border-radius: 0 5px 5px 0; 
-    cursor: pointer;
-    height: 100%; 
-    display: flex; 
-    align-items: center;
-  }
-  
-  .filter-categories {
-    padding: 8px;
-    border-radius: 5px; 
-    border: 1px solid #ffffff8a; 
-    margin-left: 300px;
-  }
-  
-  .news-container {
-    padding: 20px;
-    margin-top: 20px;
-  }
+.container-news {
+  background:rgb(33, 56, 33); 
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  height: 100vh;
+}
 
+.transparent-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(47, 70, 47, 0);
+  color: white;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.image-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 130px;
+  height: auto;
+  border-radius: 10px;
+  padding-left: 45px;
+  padding-top: 35px;
+}
+
+.overlay-text {
+  max-width: 100%;
+  font-size: 35px;
+  font-weight: 600;
+  margin-left: -20px;
+  padding-top: 35px;
+}
+
+.fondo-container {
+  background-color: #ffffff00;
+  height: 100vh;
+  padding: 15px;
+  padding-top: 140px;
+  border-radius: 10px;
+}
+
+.container-news {
+  background:rgb(33, 56, 33); 
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  height: 100vh;
+}
+
+.transparent-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(47, 70, 47, 0);
+  color: white;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+
+.logo {
+  width: 130px;
+  height: auto;
+  border-radius: 10px;
+  padding-left: 45px;
+  padding-top: 35px;
+}
+
+.overlay-text {
+  max-width: 100%;
+  font-size: 35px;
+  font-weight: 600;
+  margin-left: -20px;
+  padding-top: 35px;
+}
+
+.fondo-container {
+  background-color: #ffffff00;
+  padding: 15px;
+  padding-top: 140px;
+  border-radius: 10px;
+  max-height: 80vh; /* Ajusta la altura máxima del contenedor */
+  overflow-y: auto; /* Habilita el scroll vertical */
+}
+
+
+.search-bar-container {
+  position: relative;
+  top: 50px; /* Ajusta este valor según sea necesario */
+  z-index: 500;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin: 0; /* Quitar el margin superior */
+  padding-top: 110px; 
+  padding-left: 30px;
+  border-radius: 5px; 
+  overflow: hidden; 
+}
+
+.search-bar input {
+  width: 70%;
+  padding: 10px; 
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px; 
+  outline: none; 
+}
+
+.search-icon {
+  color: white; 
+  font-size: 1.2rem;
+  padding: 14px; 
+  background-color: #a0cf30;
+  border-radius: 0 5px 5px 0; 
+  cursor: pointer;
+  height: 100%; 
+  display: flex; 
+  align-items: center;
+}
+
+.card {
+  background-color: white;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+} 
   
-  .card {
-    background-color: white;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-  }
+.pagination-container{
+  color:white;
+}

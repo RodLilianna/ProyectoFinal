@@ -113,17 +113,3 @@ button:hover {
   background-color: rgba(139, 69, 19, 50%);
   margin: 0 10px;
 }
-
-.modal-backdrop {
-  display: none !important; /* Oculta el backdrop */
-}
-
-.modal {
-  background: none !important; /* Elimina el fondo oscuro */
-  box-shadow: none !important; /* Elimina sombras si las hay */
-}
-
-.modal-content {
-  border-radius: 10px; /* Ajusta el diseño según tus necesidades */
-  border: 1px solid #ccc; /* Opcional: cambia los bordes */
-}
